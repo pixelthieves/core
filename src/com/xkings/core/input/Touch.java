@@ -6,10 +6,10 @@ import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.xkings.core.input.Input.MAX_TOUCHES;
 
 public class Touch extends Vector2 {
     public static final float TOUCH_CLICK_DEVIATION = 40f;
+    private static final int MAX_TOUCHES = 10;
     private static List<Touch> touches = Touch.getTouches();
     private final int id;
     private boolean pressedX;

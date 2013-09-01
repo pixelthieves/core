@@ -1,18 +1,12 @@
 package com.xkings.core.server;
 
-import com.xkings.core.App;
 import com.xkings.core.logic.Updateable;
 
 import java.util.ArrayList;
 
 public abstract class AbstractServer implements Updateable {
-    protected App app;
     private final ArrayList<ClientCommand> buffer = new ArrayList<ClientCommand>();
     private boolean active = true;
-
-    public AbstractServer(App app) {
-        this.app = app;
-    }
 
     public synchronized void send(ClientCommand c) {
         buffer.add(c);

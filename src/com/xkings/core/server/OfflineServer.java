@@ -2,18 +2,15 @@ package com.xkings.core.server;
 
 import com.artemis.EntitySystem;
 import com.artemis.World;
-import com.xkings.core.App;
-import com.xkings.core.input.CompabilityProcessInput;
 
 public class OfflineServer extends AbstractServer {
 
     private final World world;
-    private final CompabilityProcessInput processInput;
+   // private final CompabilityProcessInput processInput;
 
-    public OfflineServer(App app, CompabilityProcessInput processInput) {
-        super(app);
-        this.processInput = processInput;
-        this.world = app.getWorld();
+    public OfflineServer(World world/*, CompabilityProcessInput processInput*/) {
+      //  this.processInput = processInput;
+        this.world = world;
     }
 
 
@@ -23,7 +20,7 @@ public class OfflineServer extends AbstractServer {
 
     @Override
     public void process(ClientCommand c) {
-        processInput.processInput(c);
+     //   processInput.processInput(c);
     }
 
     @Override

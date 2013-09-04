@@ -11,6 +11,7 @@ public abstract class ConcreteEntity {
     protected final List<Component> bag = new ArrayList<Component>();
     private final World world;
     private Entity entity;
+    private boolean registered;
 
     public ConcreteEntity(World world) {
         this.world = world;
@@ -28,9 +29,14 @@ public abstract class ConcreteEntity {
 
     public void register() {
         this.createEntity().addToWorld();
+        registered = true;
     }
 
     public void deleteFromWorld() {
         entity.deleteFromWorld();
+    }
+
+    public boolean isRegistered() {
+        return registered;
     }
 }

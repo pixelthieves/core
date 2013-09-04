@@ -8,7 +8,7 @@ import com.xkings.core.component.VisibleComponent;
  * Date: 7/18/13 <br>
  * Time: 8:03 PM <br>
  */
-public class VisibleEntity extends ConcreteEntity {
+public abstract class VisibleEntity extends ConcreteEntity {
     private final VisibleComponent visibleComponent;
 
     public VisibleEntity(World world, boolean visible) {

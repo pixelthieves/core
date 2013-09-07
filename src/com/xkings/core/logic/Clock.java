@@ -26,7 +26,7 @@ public class Clock implements Runnable {
         initTime = System.currentTimeMillis();
     }
 
-    public static Clock getInstance(String name, boolean sleep, boolean manualExecution) {
+    public static Clock createInstance(String name, boolean sleep, boolean manualExecution) {
         Clock instance = new Clock(name, sleep, manualExecution);
         if (!manualExecution) {
             new Thread(instance, instance.getName()).start();

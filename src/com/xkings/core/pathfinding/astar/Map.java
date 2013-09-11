@@ -23,7 +23,7 @@
  * - store nodes in openList sorted by their f value.
  */
 
-package com.xkings.core.pathfinding;
+package com.xkings.core.pathfinding.astar;
 
 import com.badlogic.gdx.math.Vector2;
 

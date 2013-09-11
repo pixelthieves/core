@@ -15,15 +15,30 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.xkings.core.pathfinding;
+package com.xkings.core.pathfinding.astar;
 
 /**
- * A simple Factory for example nodes.
+ * A Factory which creates new instances of an implementation of the
+ * <code>AbstractNode</code> at given coordinates.
+ * <p/>
+ * Must be implemented and given to <code>Map</code> instance on
+ * construction.
+ *
+ * @version 1.0
+ * @see AbstractNode
  */
-public class MapEntityNodeFactory implements NodeFactory {
-    @Override
-    public AbstractNode createNode(int x, int y) {
-        return new MapEntityNode(x, y);
-    }
+public interface NodeFactory {
+
+    /**
+     * creates new instances of an implementation of the
+     * <code>AbstractNode</code>.
+     * In an implementation, it should return a new node with its position
+     * set to the given x and y values.
+     *
+     * @param x position on the x-axis
+     * @param y position on the y-axis
+     * @return
+     */
+    public AbstractNode createNode(int x, int y);
 
 }

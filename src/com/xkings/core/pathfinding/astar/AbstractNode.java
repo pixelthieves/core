@@ -15,7 +15,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.xkings.core.pathfinding;
+package com.xkings.core.pathfinding.astar;
 
 /**
  * This class represents an AbstractNode. It has all the appropriate fields as well

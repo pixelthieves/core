@@ -15,15 +15,27 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package com.xkings.core.pathfinding.astar;
+package com.xkings.core.pathfinding;
 
 /**
- * A simple Factory for example nodes.
+ * A simple Example implementation of a Node only overriding the sethCosts
+ * method; uses manhatten method.
  */
-public class MapEntityNodeFactory implements NodeFactory {
-    @Override
-    public AbstractNode createNode(int x, int y) {
-        return new MapEntityNode(x, y);
+public class MapEntityNode extends AbstractNode {
+
+    public MapEntityNode(int xPosition, int yPosition) {
+        super(xPosition, yPosition);
+        // do other init stuff
+    }
+
+    public void sethCosts(AbstractNode endNode) {
+        this.sethCosts((absolute(this.getxPosition() - endNode.getxPosition())
+                + absolute(this.getyPosition() - endNode.getyPosition()))
+                * BASICMOVEMENTCOST);
+    }
+
+    private int absolute(int a) {
+        return a > 0 ? a : -a;
     }
 
 }

@@ -1,8 +1,9 @@
 package com.xkings.core.ai.task;
 
-import com.kingx.artemis.Entity;
-import com.kingx.dungeons.engine.ai.controller.ParentTaskController;
-import com.kingx.dungeons.engine.ai.controller.TaskController;
+
+import com.artemis.Entity;
+import com.xkings.core.ai.controller.ParentTaskController;
+import com.xkings.core.ai.controller.TaskController;
 
 /**
  * Inner node of the behavior tree, a flow director node, that selects a child

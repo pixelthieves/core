@@ -1,7 +1,8 @@
 package com.xkings.core.ai.task;
 
-import com.kingx.artemis.Entity;
-import com.kingx.dungeons.engine.ai.controller.TaskController;
+
+import com.artemis.Entity;
+import com.xkings.core.ai.controller.TaskController;
 
 /**
  * Base class for the specific decorators. Decorates all the task methods except

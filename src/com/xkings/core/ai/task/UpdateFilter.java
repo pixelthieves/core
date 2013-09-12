@@ -1,7 +1,9 @@
 package com.xkings.core.ai.task;
 
-import com.kingx.artemis.Entity;
-import com.kingx.dungeons.utils.Ticker;
+
+import com.artemis.Entity;
+import com.xkings.core.ai.Ticker;
+
 
 /**
  * Decorator that adds a update speed limit to the task it is applied to

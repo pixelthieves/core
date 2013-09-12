@@ -1,6 +1,7 @@
 package com.xkings.core.ai.task;
 
-import com.kingx.artemis.Entity;
+
+import com.artemis.Entity;
 
 /**
  * Selector is logical <tt>OR</tt> over child task.

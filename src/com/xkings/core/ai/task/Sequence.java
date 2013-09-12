@@ -1,6 +1,7 @@
 package com.xkings.core.ai.task;
 
-import com.kingx.artemis.Entity;
+
+import com.artemis.Entity;
 
 /**
  * Sequence is logical <tt>AND</tt> over child task.

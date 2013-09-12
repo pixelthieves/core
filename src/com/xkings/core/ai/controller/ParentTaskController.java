@@ -1,9 +1,11 @@
 package com.xkings.core.ai.controller;
 
+import com.xkings.core.ai.task.Task;
+
 import java.util.LinkedList;
 import java.util.List;
 
-import com.kingx.dungeons.engine.ai.task.Task;
+
 
 /**
  * This class extends the TaskController class to add support for child tasks

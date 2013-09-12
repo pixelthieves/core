@@ -1,6 +1,7 @@
 package com.xkings.core.ai.task;
 
-import com.kingx.dungeons.engine.ai.controller.TaskController;
+
+import com.xkings.core.ai.controller.TaskController;
 
 /**
  * Leaf task (or node) in the behavior tree.

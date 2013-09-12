@@ -54,6 +54,7 @@ public abstract class AbstractNode {
     private int yPosition;
     private boolean walkable;
 
+
     // for pathfinding:
 
     /** the previous AbstractNode of this one on the currently calculated path. */

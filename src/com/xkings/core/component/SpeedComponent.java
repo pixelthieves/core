@@ -1,19 +1,17 @@
 package com.xkings.core.component;
 
 import com.artemis.Component;
-import com.badlogic.gdx.math.Vector3;
 
 public class SpeedComponent extends Component {
 
 
-    private final Vector3 speed;
+    private final float speed;
 
-    public SpeedComponent(float x, float y, float z) {
-        this.speed = new Vector3(x, y, z);
+    public SpeedComponent(float speed) {
+        this.speed = speed;
     }
 
-    public Vector3 getPoint() {
+    public float getSpeed() {
         return speed;
     }
-
 }

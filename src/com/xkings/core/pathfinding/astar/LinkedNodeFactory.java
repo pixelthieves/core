@@ -18,24 +18,18 @@
 package com.xkings.core.pathfinding.astar;
 
 /**
- * A simple Example implementation of a Node only overriding the sethCosts
- * method; uses manhatten method.
+ * A Factory for LinkedNode.
  */
-public class MapEntityNode extends AbstractNode {
+public class LinkedNodeFactory implements NodeFactory {
+    private final boolean[][] footprint;
 
-    public MapEntityNode(int xPosition, int yPosition) {
-        super(xPosition, yPosition);
-        // do other init stuff
+    public LinkedNodeFactory(boolean[][] footprint) {
+        this.footprint = footprint;
     }
 
-    public void sethCosts(AbstractNode endNode) {
-        this.sethCosts((absolute(this.getxPosition() - endNode.getxPosition())
-                + absolute(this.getyPosition() - endNode.getyPosition()))
-                * BASICMOVEMENTCOST);
-    }
-
-    private int absolute(int a) {
-        return a > 0 ? a : -a;
+    @Override
+    public AbstractNode createNode(int x, int y) {
+        return new LinkedNode(footprint, x, y);
     }
 
 }

@@ -20,10 +20,10 @@ package com.xkings.core.pathfinding.astar;
 /**
  * A simple Factory for example nodes.
  */
-public class MapEntityNodeFactory implements NodeFactory {
+public class MapNodeFactory implements NodeFactory {
     @Override
     public AbstractNode createNode(int x, int y) {
-        return new MapEntityNode(x, y);
+        return new MapNode(x, y);
     }
 
 }

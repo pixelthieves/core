@@ -26,6 +26,7 @@
 package com.xkings.core.pathfinding.astar;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -54,7 +55,11 @@ public class Map {
     /**
      * weather or not it is possible to walk diagonally on the map in general.
      */
-    protected static boolean CAN_MOVE_DIAGONALY = false;
+    protected static boolean CAN_MOVE_DIAGONALY = true;
+    /**
+     * weather or not it is possible to walk diagonally through corners.
+     */
+    protected static boolean CAN_CUT_CORNERS = false;
 
     /**
      * holds nodes. first dim represents x-axis, second y-axis.
@@ -150,9 +155,9 @@ public class Map {
         }
         print("\n");
 
-        for (int j = hight; j >= 0; j--) {
+        for (int j = hight - 1; j >= 0; j--) {
             print("|"); // boarder of map
-            for (int i = 0; i <= width; i++) {
+            for (int i = 0; i < width; i++) {
                 if (nodes[i][j].isWalkable()) {
                     print("  ");
                 } else {
@@ -254,17 +259,17 @@ public class Map {
     /**
      * wrapper for findpath.
      */
-    public final List<Vector2> findPath(Vector2 a, Vector2 b) {
-        List<AbstractNode> path = findPath((int) a.x, (int) a.y, (int) b.x, (int) b.y);
-        List<Vector2> result = null;
+    public final List<Vector3> findPath(Vector2 start, Vector2 goal) {
+        List<AbstractNode> path = findPath((int) start.x, (int) start.y, (int) goal.x, (int) goal.y);
+        List<Vector3> result = null;
         if (path != null) {
-            result = new ArrayList<Vector2>();
+            result = new ArrayList<Vector3>();
             for (int i = 0; i < path.size(); i++) {
                 AbstractNode pathPoint = path.get(i);
-                result.add(new Vector2(pathPoint.getxPosition(), pathPoint.getyPosition()));
+                result.add(new Vector3(pathPoint.getxPosition(), pathPoint.getyPosition(), 0));
             }
         }
-        return result; // unreachable
+        return result;
     }
 
     /**
@@ -317,74 +322,85 @@ public class Map {
         int y = node.getyPosition();
         List<AbstractNode> adj = new LinkedList<AbstractNode>();
 
+        AbstractNode northNode = this.getNode(x, y + 1);
+        AbstractNode southNode = this.getNode(x, y - 1);
+        AbstractNode eastNode = this.getNode(x + 1, y);
+        AbstractNode westNode = this.getNode(x - 1, y);
+
+
         AbstractNode temp;
         if (x > 0) {
-            temp = this.getNode((x - 1), y);
-            if (temp.isWalkable() && !closedList.contains(temp)) {
-                temp.setIsDiagonaly(false);
-                adj.add(temp);
-            }
+            testNode(adj, westNode);
         }
 
         if (x < width) {
-            temp = this.getNode((x + 1), y);
-            if (temp.isWalkable() && !closedList.contains(temp)) {
-                temp.setIsDiagonaly(false);
-                adj.add(temp);
-            }
+            testNode(adj, eastNode);
         }
 
         if (y > 0) {
-            temp = this.getNode(x, (y - 1));
-            if (temp.isWalkable() && !closedList.contains(temp)) {
-                temp.setIsDiagonaly(false);
-                adj.add(temp);
-            }
+            testNode(adj, southNode);
         }
 
         if (y < hight) {
-            temp = this.getNode(x, (y + 1));
-            if (temp.isWalkable() && !closedList.contains(temp)) {
-                temp.setIsDiagonaly(false);
-                adj.add(temp);
-            }
+            testNode(adj, northNode);
         }
 
         // add nodes that are diagonaly adjacent too:
         if (CAN_MOVE_DIAGONALY) {
+
+            AbstractNode northEastNode = this.getNode(x + 1, y + 1);
+            AbstractNode northWestNode = this.getNode(x - 1, y + 1);
+            AbstractNode southEastNode = this.getNode(x + 1, y - 1);
+            AbstractNode southWestNode = this.getNode(x - 1, y - 1);
+
             if (x < width && y < hight) {
-                temp = this.getNode((x + 1), (y + 1));
+                temp = northEastNode;
                 if (temp.isWalkable() && !closedList.contains(temp)) {
-                    temp.setIsDiagonaly(true);
-                    adj.add(temp);
+                    if (CAN_CUT_CORNERS || northNode.isWalkable() && eastNode.isWalkable()) {
+                        temp.setIsDiagonaly(true);
+                        adj.add(temp);
+                    }
                 }
             }
 
             if (x > 0 && y > 0) {
-                temp = this.getNode((x - 1), (y - 1));
+                temp = southWestNode;
                 if (temp.isWalkable() && !closedList.contains(temp)) {
-                    temp.setIsDiagonaly(true);
-                    adj.add(temp);
+                    if (CAN_CUT_CORNERS || southNode.isWalkable() && westNode.isWalkable()) {
+                        temp.setIsDiagonaly(true);
+                        adj.add(temp);
+                    }
                 }
             }
 
             if (x > 0 && y < hight) {
-                temp = this.getNode((x - 1), (y + 1));
+                temp = northWestNode;
                 if (temp.isWalkable() && !closedList.contains(temp)) {
-                    temp.setIsDiagonaly(true);
-                    adj.add(temp);
+                    if (CAN_CUT_CORNERS || northNode.isWalkable() && westNode.isWalkable()) {
+                        temp.setIsDiagonaly(true);
+                        adj.add(temp);
+                    }
                 }
             }
 
             if (x < width && y > 0) {
-                temp = this.getNode((x + 1), (y - 1));
+                temp = southEastNode;
                 if (temp.isWalkable() && !closedList.contains(temp)) {
-                    temp.setIsDiagonaly(true);
-                    adj.add(temp);
+                    if (CAN_CUT_CORNERS || southNode.isWalkable() && eastNode.isWalkable()) {
+                        temp.setIsDiagonaly(true);
+                        adj.add(temp);
+                    }
                 }
             }
         }
         return adj;
+    }
+
+    private void testNode(List<AbstractNode> adj, AbstractNode testNode) {
+        if (testNode.isWalkable() && !closedList.contains(testNode)) {
+            testNode.setIsDiagonaly(false);
+            adj.add(testNode);
+        }
     }
 
 }

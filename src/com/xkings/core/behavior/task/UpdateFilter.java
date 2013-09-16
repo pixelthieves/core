@@ -1,8 +1,8 @@
-package com.xkings.core.ai.task;
+package com.xkings.core.behavior.task;
 
 
 import com.artemis.Entity;
-import com.xkings.core.ai.Ticker;
+import com.xkings.core.behavior.Ticker;
 
 
 /**

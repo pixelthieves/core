@@ -7,11 +7,14 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
 import java.util.HashMap;
 
+/**
+ * Class that is responsible for loading and baking shaders.
+ */
 public class Shader {
     private static Shader instance;
     private final HashMap<String, ShaderStructure> map = new HashMap<String, ShaderStructure>();
 
-    public Shader() {
+    private Shader() {
         FileHandle dirHandle;
 
         // Eclipse side-effect of linking assets, assets are copied in bin folder
@@ -55,6 +58,12 @@ public class Shader {
         }
     }
 
+    /**
+     * Returns a shader with corresponding name.
+     *
+     * @param name of the shader
+     * @return a baked shader
+     */
     public static ShaderProgram getShader(String name) {
         if (instance == null) {
             instance = new Shader();

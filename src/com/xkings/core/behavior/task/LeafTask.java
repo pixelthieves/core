@@ -1,7 +1,7 @@
-package com.xkings.core.ai.task;
+package com.xkings.core.behavior.task;
 
 
-import com.xkings.core.ai.controller.TaskController;
+import com.xkings.core.behavior.controller.TaskController;
 
 /**
  * Leaf task (or node) in the behavior tree.

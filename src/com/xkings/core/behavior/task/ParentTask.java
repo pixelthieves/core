@@ -1,9 +1,9 @@
-package com.xkings.core.ai.task;
+package com.xkings.core.behavior.task;
 
 
 import com.artemis.Entity;
-import com.xkings.core.ai.controller.ParentTaskController;
-import com.xkings.core.ai.controller.TaskController;
+import com.xkings.core.behavior.controller.ParentTaskController;
+import com.xkings.core.behavior.controller.TaskController;
 
 /**
  * Inner node of the behavior tree, a flow director node, that selects a child

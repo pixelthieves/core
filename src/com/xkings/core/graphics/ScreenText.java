@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An information text that is aligned with screen border.
+ */
 public class ScreenText {
     private static final int OFFSET = 30;
     private final BitmapFont.HAlignment orientation;
@@ -20,10 +23,20 @@ public class ScreenText {
         font.setColor(Color.BLACK);
     }
 
+    /**
+     * Adds one line of information to be rendered.
+     *
+     * @param info information text
+     */
     public void addInfo(String info) {
         this.buffer.add(info);
     }
 
+    /**
+     * Renders the text on the screen.
+     *
+     * @param sb SpriteBatch that is used for the rendering process.
+     */
     public void render(SpriteBatch sb) {
         sb.begin();
         for (int i = 0; i < buffer.size(); i++) {

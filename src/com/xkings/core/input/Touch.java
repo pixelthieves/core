@@ -6,7 +6,9 @@ import com.badlogic.gdx.math.Vector2;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Class that hold information about touched point on the screen.
+ */
 public class Touch extends Vector2 {
     public static final float TOUCH_CLICK_DEVIATION = 40f;
     private static final int MAX_TOUCHES = 10;

@@ -2,6 +2,9 @@ package com.xkings.core.graphics;
 
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
+/**
+ * Exception throw by shader compilation.
+ */
 public class ShaderException extends RuntimeException {
 
     /**

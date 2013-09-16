@@ -1,4 +1,4 @@
-package com.xkings.core.ai.task;
+package com.xkings.core.behavior.task;
 
 
 import com.artemis.Entity;

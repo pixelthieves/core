@@ -1,8 +1,8 @@
-package com.xkings.core.ai.controller;
+package com.xkings.core.behavior.controller;
 
 
 import com.artemis.Entity;
-import com.xkings.core.ai.task.Task;
+import com.xkings.core.behavior.task.Task;
 
 /**
  * Class added by composition to any task, to keep track of the Task state and

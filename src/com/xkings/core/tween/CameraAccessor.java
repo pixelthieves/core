@@ -10,12 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
  */
 public class CameraAccessor implements TweenAccessor<OrthographicCamera> {
 
-    // The following lines define the different possible tween types.
-    // It's up to you to define what you need :-)
-
     public static final int ZOOM = 1;
-
-    // TweenAccessor implementation
 
     @Override
     public int getValues(OrthographicCamera target, int tweenType, float[] returnValues) {

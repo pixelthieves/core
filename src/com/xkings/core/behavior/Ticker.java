@@ -1,4 +1,4 @@
-package com.xkings.core.ai;
+package com.xkings.core.behavior;
 
 /**
  * Time step class, for regulating update speed.

@@ -3,9 +3,13 @@ package com.xkings.core.logic;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Internal clock system that triggers system function in an interval. Clock can be triggered manually or by a {@link Thread}.
+ * This system ensures that simulation will run at constant speed, eliminating spikes.
+ */
 public class Clock implements Runnable {
 
-    private static final double SPEED_FACTOR = 1f;
+    private double speedMultiplier = 1f;
     private final String name;
     private final boolean sleep;
     private boolean quit = false;
@@ -34,6 +38,11 @@ public class Clock implements Runnable {
         return instance;
     }
 
+    /**
+     * If manualExecution is set to {@code true} one cycle is triggered, infinite while cycle is triggered otherwise.
+     * <p/>
+     * {@inheritDoc}
+     */
     @Override
     public void run() {
         if (!manualExecution) {
@@ -47,7 +56,7 @@ public class Clock implements Runnable {
 
     private void iterate() {
         long newTime = System.nanoTime();
-        double frameTime = (double) (newTime - currentTime) * SPEED_FACTOR / BILLION;
+        double frameTime = (double) (newTime - currentTime) * speedMultiplier / BILLION;
         currentTime = newTime;
 
         frameTime = Math.min(frameTime, maxStep); // note: max frame time to avoid spiral of death
@@ -79,14 +88,30 @@ public class Clock implements Runnable {
         }
     }
 
+    /**
+     * Adds service into the system.
+     *
+     * @param service to be added
+     */
     public void addService(Updateable service) {
         services.add(service);
     }
 
+
+    /**
+     * Removes service from the system.
+     *
+     * @param service to be removed
+     */
     public void removeService(Updateable service) {
         services.remove(service);
     }
 
+    /**
+     * Returns number or clocks since start of the system.
+     *
+     * @return number of clocks
+     */
     public long getClocks() {
         return clocks;
     }
@@ -99,9 +124,12 @@ public class Clock implements Runnable {
         return name;
     }
 
-    public void process() {
-        if (manualExecution) {
-            run();
-        }
+    /**
+     * Sets speed multiplier for the game.
+     *
+     * @param speedMultiplier If multiplier is greater then 1, game will run faster, slower if multiplier is smaller.
+     */
+    public void setSpeedMultiplier(double speedMultiplier) {
+        this.speedMultiplier = speedMultiplier;
     }
 }

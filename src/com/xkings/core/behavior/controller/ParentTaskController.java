@@ -1,6 +1,6 @@
-package com.xkings.core.ai.controller;
+package com.xkings.core.behavior.controller;
 
-import com.xkings.core.ai.task.Task;
+import com.xkings.core.behavior.task.Task;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ParentTaskController extends TaskController {
     /**
-     * Vector of child Task
+     * List of child Task
      */
     private final List<Task> subtasks;
 

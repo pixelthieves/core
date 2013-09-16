@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 /**
+ * Camera can be only operated inside of bounds. If camera is brought outside of the bounds, it's position is adjusted so, camera's viewport aligned with bounds.
  * Created by Tomas on 9/7/13.
  */
 public class BoundedCameraHandler extends BoundlessCameraHandler {

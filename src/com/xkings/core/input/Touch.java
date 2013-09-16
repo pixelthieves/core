@@ -80,11 +80,7 @@ public class Touch extends Vector2 {
     }
 
     public boolean isClicked() {
-        if (isRelease() && x > 0 && y > 0) {
-            return equals(oldX, x, TOUCH_CLICK_DEVIATION) && equals(oldY, y, TOUCH_CLICK_DEVIATION);
-        } else {
-            return false;
-        }
+        return isRelease() && x > 0 && y > 0 && equals(oldX, x, TOUCH_CLICK_DEVIATION) && equals(oldY, y, TOUCH_CLICK_DEVIATION);
     }
 
     private boolean equals(float a, float b, float error) {

@@ -9,7 +9,7 @@ import com.xkings.core.behavior.controller.TaskController;
  * for the DoAction, for commodity. (Tough any method can be decorated in the
  * base classes with no problem, they are decorated by default so the programmer
  * does not forget)
- * 
+ *
  */
 public abstract class TaskDecorator extends Task {
     /**
@@ -19,9 +19,7 @@ public abstract class TaskDecorator extends Task {
 
     /**
      * Creates a new instance of the Decorator class
-     * 
-     * @param blackboard
-     *            Reference to the AI Blackboard data
+     *
      * @param task
      *            Task to decorate
      */
@@ -31,7 +29,7 @@ public abstract class TaskDecorator extends Task {
 
     /**
      * Initializes the task reference
-     * 
+     *
      * @param task
      *            Task to decorate
      */
@@ -66,7 +64,7 @@ public abstract class TaskDecorator extends Task {
 
     /**
      * Returns decorated task
-     * 
+     *
      * @return decorated task
      */
     public Task getTask() {

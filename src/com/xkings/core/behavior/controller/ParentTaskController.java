@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * This class extends the TaskController class to add support for child tasks
  * and their logic. Used together with ParentTask.
- * 
+ *
  */
 public class ParentTaskController extends TaskController {
     /**
@@ -25,7 +25,7 @@ public class ParentTaskController extends TaskController {
 
     /**
      * Creates a new instance of the ParentTaskController class
-     * 
+     *
      * @param task
      */
     public ParentTaskController(Task task) {
@@ -37,7 +37,7 @@ public class ParentTaskController extends TaskController {
 
     /**
      * Adds a new subtask to the end of the subtask list.
-     * 
+     *
      * @param task
      *            Task to add
      */
@@ -55,7 +55,7 @@ public class ParentTaskController extends TaskController {
 
     /**
      * Returns all subtasks in this node.
-     * 
+     *
      * @return subtasks in current node
      */
     public List<Task> getSubtasks() {

@@ -8,9 +8,9 @@ import com.xkings.core.behavior.controller.TaskController;
 /**
  * Inner node of the behavior tree, a flow director node, that selects a child
  * to be executed next.
- * 
+ *
  * Sets a specific kind of TaskController for these kinds of tasks.
- * 
+ *
  */
 public abstract class ParentTask extends Task {
     /**

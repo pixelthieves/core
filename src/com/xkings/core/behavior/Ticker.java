@@ -13,7 +13,7 @@ public class Ticker {
 
     /**
      * Creates a new instance of the Ticker class
-     * 
+     *
      * @param maxCount
      *            number of ticks between updates
      */
@@ -25,7 +25,7 @@ public class Ticker {
 
     /**
      * Returns true if the ticker is ready for a update, false otherwise
-     * 
+     *
      * @return {@code true} if ticker is ready, {@code false} otherwise.
      */
     public boolean isReady() {

@@ -7,12 +7,12 @@ import com.xkings.core.behavior.task.Task;
 /**
  * Class added by composition to any task, to keep track of the Task state and
  * logic flow.
- * 
+ *
  * This state-control class is separated from the Task class so the Decorators
  * have a chance at compile-time security.
- * 
+ *
  * @author Ying
- * 
+ *
  */
 public class TaskController {
     /**
@@ -37,7 +37,7 @@ public class TaskController {
 
     /**
      * Creates a new instance of the TaskController class
-     * 
+     *
      * @param task
      *            Task to controll.
      */
@@ -57,7 +57,7 @@ public class TaskController {
 
     /**
      * Sets the task reference
-     * 
+     *
      * @param task
      *            Task to monitor
      */
@@ -100,7 +100,7 @@ public class TaskController {
 
     /**
      * Indicates whether the task finished successfully
-     * 
+     *
      * @return True if it did, false if it didn't
      */
     public boolean succeeded() {
@@ -109,7 +109,7 @@ public class TaskController {
 
     /**
      * Indicates whether the task finished with failure
-     * 
+     *
      * @return True if it did, false if it didn't
      */
     public boolean failed() {
@@ -118,7 +118,7 @@ public class TaskController {
 
     /**
      * Indicates whether the task finished
-     * 
+     *
      * @return True if it did, false if it didn't
      */
     public boolean finished() {
@@ -127,7 +127,7 @@ public class TaskController {
 
     /**
      * Indicates whether the class has started or not
-     * 
+     *
      * @return True if it has, false if it hasn't
      */
     public boolean started() {

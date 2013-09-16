@@ -38,7 +38,7 @@ package com.xkings.core.pathfinding.astar;
  * <p>
  * <code>sethCosts(AbstractNode endAbstractNode)</code>
  * <p>
- * @see MapEntityNode#sethCosts(AbstractNode endNode) example Implementation using manhatten method
+ * @see MapNode#sethCosts(AbstractNode endNode) example Implementation using manhatten method
  * <p>
  *
  * @version 1.0
@@ -77,8 +77,8 @@ public abstract class AbstractNode {
     /**
      * constructs a walkable AbstractNode with given coordinates.
      *
-     * @param xPosition
-     * @param yPosition
+     * @param xPosition x coordinate
+     * @param yPosition y coordinate
      */
     public AbstractNode(int xPosition, int yPosition) {
         this.xPosition = xPosition;

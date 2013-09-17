@@ -4,27 +4,25 @@ package com.xkings.core.behavior.task;
 import com.artemis.Entity;
 import com.xkings.core.behavior.controller.TaskController;
 
-public abstract class Task {
+public abstract class Task<T> {
 
     /**
-     * Holds current entity for processing.
+     * Holds current object for processing.
      */
-    protected Entity entity;
+    protected T object;
 
     /**
      * Override to do a pre-conditions check to see if the task can be updated.
      *
      * @return True if it can, false if it can't
      */
-    public abstract boolean checkConditions(Entity entity);
+    public abstract boolean checkConditions(T entity);
 
     /**
      * Override to add startup logic to the task
-     *
-     * @param entity current entity
      */
-    public void start(Entity entity) {
-        this.entity = entity;
+    public void start() {
+
     }
 
     /**
@@ -37,7 +35,7 @@ public abstract class Task {
     /**
      * Override to specify the logic the task must update each cycle
      */
-    public abstract boolean doAction(Entity entity);
+    public abstract boolean doAction(T entity);
 
     /**
      * Override to specify the controller the task has

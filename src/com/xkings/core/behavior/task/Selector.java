@@ -10,14 +10,14 @@ import com.artemis.Entity;
  * {@code true} on conditions. Selector fails if all children fail.
  *
  */
-public class Selector extends ParentTask {
+public class Selector<T> extends ParentTask<T> {
 
     @Override
-    public boolean doAction(Entity entity) {
+    public boolean doAction(T object) {
         for (Task t : control.getSubtasks()) {
-            t.start(entity);
-            if (t.checkConditions(entity)) {
-                if (t.doAction(entity)) {
+            t.start();
+            if (t.checkConditions(object)) {
+                if (t.doAction(object)) {
                     return true;
                 }
             }

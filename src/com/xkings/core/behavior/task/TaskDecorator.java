@@ -11,7 +11,7 @@ import com.xkings.core.behavior.controller.TaskController;
  * does not forget)
  *
  */
-public abstract class TaskDecorator extends Task {
+public abstract class TaskDecorator<T> extends Task<T> {
     /**
      * Reference to the task to decorate
      */
@@ -42,7 +42,7 @@ public abstract class TaskDecorator extends Task {
      * Decorate the CheckConditions
      */
     @Override
-    public boolean checkConditions(Entity entity) {
+    public boolean checkConditions(T entity) {
         return this.task.checkConditions(entity);
     }
 

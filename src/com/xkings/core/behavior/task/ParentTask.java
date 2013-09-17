@@ -12,7 +12,7 @@ import com.xkings.core.behavior.controller.TaskController;
  * Sets a specific kind of TaskController for these kinds of tasks.
  *
  */
-public abstract class ParentTask extends Task {
+public abstract class ParentTask<T> extends Task<T> {
     /**
      * TaskControler for the parent task.
      */
@@ -33,7 +33,7 @@ public abstract class ParentTask extends Task {
      * Gets the control reference
      */
     @Override
-    public TaskController getControl() {
+    public ParentTaskController getControl() {
         return control;
     }
 
@@ -41,7 +41,7 @@ public abstract class ParentTask extends Task {
      * Checks for the appropiate pre-state of the data
      */
     @Override
-    public boolean checkConditions(Entity entity) {
+    public boolean checkConditions(T object) {
         return control.getSubtasks().size() > 0;
     }
 }

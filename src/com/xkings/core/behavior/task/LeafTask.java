@@ -10,7 +10,7 @@ import com.xkings.core.behavior.controller.TaskController;
  * logic, without burdening the Task class with complications.
  *
  */
-public abstract class LeafTask extends Task {
+public abstract class LeafTask<T> extends Task<T> {
 
     private final TaskController taskController;
 

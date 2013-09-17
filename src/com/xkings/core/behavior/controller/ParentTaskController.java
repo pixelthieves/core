@@ -1,5 +1,6 @@
 package com.xkings.core.behavior.controller;
 
+import com.xkings.core.behavior.task.ParentTask;
 import com.xkings.core.behavior.task.Task;
 
 import java.util.LinkedList;
@@ -28,7 +29,7 @@ public class ParentTaskController extends TaskController {
      *
      * @param task
      */
-    public ParentTaskController(Task task) {
+    public ParentTaskController(ParentTask task) {
         super(task);
 
         this.subtasks = new LinkedList<Task>();

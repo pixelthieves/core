@@ -10,13 +10,13 @@ import com.artemis.Entity;
  * {@code false} on conditions. Selector succeeds if all children succeed.
  *
  */
-public class Sequence extends ParentTask {
+public class Sequence<T> extends ParentTask<T> {
 
     @Override
-    public boolean doAction(Entity entity) {
+    public boolean doAction(T object) {
         for (Task t : control.getSubtasks()) {
-            t.start(entity);
-            if (!t.checkConditions(entity) || !t.doAction(entity)) {
+            t.start();
+            if (!t.checkConditions(object) || !t.doAction(object)) {
                 return false;
             }
         }

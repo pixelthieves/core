@@ -68,9 +68,9 @@ public class TaskController {
     /**
      * Starts the monitored class
      */
-    public void safeStart(Entity entity) {
+    public void safeStart() {
         this.started = true;
-        task.start(entity);
+        task.start();
     }
 
     /**

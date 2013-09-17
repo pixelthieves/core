@@ -9,7 +9,7 @@ import com.xkings.core.behavior.Ticker;
  * Decorator that adds a update speed limit to the task it is applied to
  *
  */
-public class UpdateFilter extends TaskDecorator {
+public class UpdateFilter<T> extends TaskDecorator<T> {
     /**
      * Ticker to keep track of ticks
      */
@@ -30,13 +30,10 @@ public class UpdateFilter extends TaskDecorator {
 
     /**
      * Starts the task and the regulator
-     *
-     * @param entity
-     *            current entity
      */
     @Override
-    public void start(Entity entity) {
-        task.start(entity);
+    public void start() {
+        task.start();
     }
 
     /**
@@ -44,7 +41,7 @@ public class UpdateFilter extends TaskDecorator {
      * update has elapsed.
      */
     @Override
-    public boolean doAction(Entity entity) {
+    public boolean doAction(T entity) {
         if (this.ticker.isReady()) {
             task.doAction(entity);
         }

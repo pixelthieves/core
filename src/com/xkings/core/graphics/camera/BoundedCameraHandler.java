@@ -13,15 +13,11 @@ public class BoundedCameraHandler extends BoundlessCameraHandler {
     private final Rectangle bounds;
 
     public BoundedCameraHandler(OrthographicCamera camera, Rectangle bounds) {
-        super(camera);
+        super(camera, Math.min(bounds.getWidth() / (camera.viewportWidth * camera.zoom), (camera.viewportHeight * camera.zoom)));
         if (bounds == null) throw new IllegalArgumentException("Bounds can't be null");
         this.bounds = bounds;
-        toCenter();
-    }
-
-    private void toCenter() {
-        camera.position.x = camera.viewportWidth / 2f;
-        camera.position.y = camera.viewportHeight / 2f;
+        zoom(camera.zoom);
+        fixBounds();
     }
 
     public void move(float x, float y) {

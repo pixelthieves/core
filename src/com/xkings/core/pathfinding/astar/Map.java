@@ -220,6 +220,9 @@ public class Map {
         openList = new LinkedList<AbstractNode>();
         closedList = new LinkedList<AbstractNode>();
         openList.add(nodes[oldX][oldY]); // add starting node to open list
+        if (oldX == newX && oldY == newY) {
+            return new LinkedList<AbstractNode>();
+        }
 
         done = false;
         AbstractNode current;

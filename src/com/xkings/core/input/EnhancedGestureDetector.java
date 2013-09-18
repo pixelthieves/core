@@ -3,8 +3,8 @@ package com.xkings.core.input;
 import com.badlogic.gdx.input.GestureDetector;
 
 /**
- * GestureDetector with added possibility to control zoom by scrolling.
- * Created by Tomas on 9/18/13.
+ * GestureDetector with added possibility to control zoom by scrolling. Created by Tomas
+ * on 9/18/13.
  */
 //TODO Zooming is not really gesture at all, should be fixed.
 public class EnhancedGestureDetector extends GestureDetector {

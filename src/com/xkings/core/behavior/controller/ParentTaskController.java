@@ -7,11 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-
 /**
- * This class extends the TaskController class to add support for child tasks
- * and their logic. Used together with ParentTask.
- *
+ * This class extends the TaskController class to add support for child tasks and their
+ * logic. Used together with ParentTask.
  */
 public class ParentTaskController extends TaskController {
     /**
@@ -39,8 +37,7 @@ public class ParentTaskController extends TaskController {
     /**
      * Adds a new subtask to the end of the subtask list.
      *
-     * @param task
-     *            Task to add
+     * @param task Task to add
      */
     public void add(Task task) {
         subtasks.add(task);

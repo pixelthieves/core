@@ -18,8 +18,8 @@
 package com.xkings.core.pathfinding.astar;
 
 /**
- * A simple Example implementation of a Node only overriding the sethCosts
- * method; uses manhatten method.
+ * A simple Example implementation of a Node only overriding the sethCosts method; uses
+ * manhatten method.
  */
 public class MapNode extends AbstractNode {
 
@@ -29,9 +29,9 @@ public class MapNode extends AbstractNode {
     }
 
     public void sethCosts(AbstractNode endNode) {
-        this.sethCosts((absolute(this.getxPosition() - endNode.getxPosition())
-                + absolute(this.getyPosition() - endNode.getyPosition()))
-                * BASICMOVEMENTCOST);
+        this.sethCosts((absolute(this.getxPosition() - endNode.getxPosition()) +
+                absolute(this.getyPosition() - endNode.getyPosition())) *
+                BASICMOVEMENTCOST);
     }
 
     private int absolute(int a) {

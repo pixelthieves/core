@@ -18,36 +18,41 @@
 package com.xkings.core.pathfinding.astar;
 
 /**
- * This class represents an AbstractNode. It has all the appropriate fields as well
- * as getter and setter to be used by the A* algorithm.
- * <p>
- * <p>
- * An <code>AbstractNode</code> has x- and y-coordinates and can be walkable or not.
- * A previous AbstractNode may be set, as well as the
- * <code>fCosts</code>, <code>gCosts</code> and <code>hCosts</code>.
- * <p>
- * <p>
+ * This class represents an AbstractNode. It has all the appropriate fields as well as
+ * getter and setter to be used by the A* algorithm.
+ * <p/>
+ * <p/>
+ * An <code>AbstractNode</code> has x- and y-coordinates and can be walkable or not. A
+ * previous AbstractNode may be set, as well as the <code>fCosts</code>,
+ * <code>gCosts</code> and <code>hCosts</code>.
+ * <p/>
+ * <p/>
  * <code>fCosts</code>: <code>gCosts</code> + <code>hCosts</code>
- * <p>
+ * <p/>
  * <code>gCosts</code>: calculated costs from start AbstractNode to this AbstractNode
- * <p>
+ * <p/>
  * <code>hCosts</code>: estimated costs to get from this AbstractNode to end AbstractNode
- * <p>
- * <p>
+ * <p/>
+ * <p/>
  * A subclass has to override the heuristic function
- * <p>
+ * <p/>
  * <code>sethCosts(AbstractNode endAbstractNode)</code>
- * <p>
- * @see MapNode#sethCosts(AbstractNode endNode) example Implementation using manhatten method
- * <p>
+ * <p/>
  *
  * @version 1.0
+ * @see MapNode#sethCosts(AbstractNode endNode) example Implementation using manhatten
+ * method
+ * <p/>
  */
 public abstract class AbstractNode {
 
-    /** costs to move sideways from one square to another. */
+    /**
+     * costs to move sideways from one square to another.
+     */
     protected static final int BASICMOVEMENTCOST = 10;
-    /** costs to move diagonally from one square to another. */
+    /**
+     * costs to move diagonally from one square to another.
+     */
     protected static final int DIAGONALMOVEMENTCOST = 14;
 
     private int xPosition;
@@ -57,21 +62,31 @@ public abstract class AbstractNode {
 
     // for pathfinding:
 
-    /** the previous AbstractNode of this one on the currently calculated path. */
+    /**
+     * the previous AbstractNode of this one on the currently calculated path.
+     */
     private AbstractNode previous;
 
-    /** weather or not the move from previous to this AbstractNode is diagonally. */
+    /**
+     * weather or not the move from previous to this AbstractNode is diagonally.
+     */
     private boolean diagonally;
 
-    /** optional extra penalty. */
+    /**
+     * optional extra penalty.
+     */
     private int movementPanelty;
 
     //private int fCosts; // g + h costs
 
-    /** calculated costs from start AbstractNode to this AbstractNode. */
+    /**
+     * calculated costs from start AbstractNode to this AbstractNode.
+     */
     private int gCosts;
 
-    /** estimated costs to get from this AbstractNode to end AbstractNode. */
+    /**
+     * estimated costs to get from this AbstractNode to end AbstractNode.
+     */
     private int hCosts;
 
     /**
@@ -173,8 +188,7 @@ public abstract class AbstractNode {
 
     /**
      * returns <code>gCosts</code> + <code>hCosts</code>.
-     * <p>
-     *
+     * <p/>
      *
      * @return the fCosts
      */
@@ -192,8 +206,8 @@ public abstract class AbstractNode {
     }
 
     /**
-     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code>
-     * for this AbstractNode.
+     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this
+     * AbstractNode.
      *
      * @param gCosts the gCosts to set
      */
@@ -202,9 +216,9 @@ public abstract class AbstractNode {
     }
 
     /**
-     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code>
-     * for this AbstractNode given the previous AbstractNode as well as the basic cost
-     * from it to this AbstractNode.
+     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this
+     * AbstractNode given the previous AbstractNode as well as the basic cost from it to
+     * this AbstractNode.
      *
      * @param previousAbstractNode
      * @param basicCost
@@ -214,14 +228,13 @@ public abstract class AbstractNode {
     }
 
     /**
-     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code>
-     * for this AbstractNode given the previous AbstractNode.
-     * <p>
+     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this
+     * AbstractNode given the previous AbstractNode.
+     * <p/>
      * It will assume <code>BASICMOVEMENTCOST</code> as the cost from
      * <code>previousAbstractNode</code> to itself if the movement is not diagonally,
-     * otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>.
-     * Weather or not it is diagonally is set in the Map class method which
-     * finds the adjacent AbstractNodes.
+     * otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
+     * diagonally is set in the Map class method which finds the adjacent AbstractNodes.
      *
      * @param previousAbstractNode
      */
@@ -235,23 +248,22 @@ public abstract class AbstractNode {
 
     /**
      * calculates - but does not set - g costs.
-     * <p>
+     * <p/>
      * It will assume <code>BASICMOVEMENTCOST</code> as the cost from
      * <code>previousAbstractNode</code> to itself if the movement is not diagonally,
-     * otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>.
-     * Weather or not it is diagonally is set in the Map class method which
-     * finds the adjacent AbstractNodes.
+     * otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
+     * diagonally is set in the Map class method which finds the adjacent AbstractNodes.
      *
      * @param previousAbstractNode
      * @return gCosts
      */
     public int calculategCosts(AbstractNode previousAbstractNode) {
         if (diagonally) {
-            return (previousAbstractNode.getgCosts()
-                    + DIAGONALMOVEMENTCOST + movementPanelty);
+            return (previousAbstractNode.getgCosts() + DIAGONALMOVEMENTCOST +
+                    movementPanelty);
         } else {
-            return (previousAbstractNode.getgCosts()
-                    + BASICMOVEMENTCOST + movementPanelty);
+            return (previousAbstractNode.getgCosts() + BASICMOVEMENTCOST +
+                    movementPanelty);
         }
     }
 
@@ -259,7 +271,7 @@ public abstract class AbstractNode {
      * calculates - but does not set - g costs, adding a movementPanelty.
      *
      * @param previousAbstractNode
-     * @param movementCost costs from previous AbstractNode to this AbstractNode.
+     * @param movementCost         costs from previous AbstractNode to this AbstractNode.
      * @return gCosts
      */
     public int calculategCosts(AbstractNode previousAbstractNode, int movementCost) {
@@ -285,8 +297,8 @@ public abstract class AbstractNode {
     }
 
     /**
-     * calculates hCosts for this AbstractNode to a given end AbstractNode.
-     * Uses Manhatten method.
+     * calculates hCosts for this AbstractNode to a given end AbstractNode. Uses Manhatten
+     * method.
      *
      * @param endAbstractNode
      */
@@ -301,15 +313,14 @@ public abstract class AbstractNode {
     }
 
     /**
-     * returns a String containing the coordinates, as well as h, f and g
-     * costs.
+     * returns a String containing the coordinates, as well as h, f and g costs.
      *
      * @return
      */
     @Override
     public String toString() {
-        return "(" + getxPosition() + ", " + getyPosition() + "): h: "
-                + gethCosts() + " g: " + getgCosts() + " f: " + getfCosts();
+        return "(" + getxPosition() + ", " + getyPosition() + "): h: " + gethCosts() +
+                " g: " + getgCosts() + " f: " + getfCosts();
     }
 
     /**

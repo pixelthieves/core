@@ -1,18 +1,16 @@
 package com.xkings.core.behavior.controller;
 
 
-import com.artemis.Entity;
 import com.xkings.core.behavior.task.Task;
 
 /**
- * Class added by composition to any task, to keep track of the Task state and
- * logic flow.
- *
- * This state-control class is separated from the Task class so the Decorators
- * have a chance at compile-time security.
+ * Class added by composition to any task, to keep track of the Task state and logic
+ * flow.
+ * <p/>
+ * This state-control class is separated from the Task class so the Decorators have a
+ * chance at compile-time security.
  *
  * @author Ying
- *
  */
 public class TaskController {
     /**
@@ -38,8 +36,7 @@ public class TaskController {
     /**
      * Creates a new instance of the TaskController class
      *
-     * @param task
-     *            Task to controll.
+     * @param task Task to controll.
      */
     public TaskController(Task task) {
         setTask(task);
@@ -58,8 +55,7 @@ public class TaskController {
     /**
      * Sets the task reference
      *
-     * @param task
-     *            Task to monitor
+     * @param task Task to monitor
      */
     public void setTask(Task task) {
         this.task = task;

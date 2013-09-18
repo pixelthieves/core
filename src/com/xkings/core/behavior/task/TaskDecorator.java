@@ -1,15 +1,12 @@
 package com.xkings.core.behavior.task;
 
 
-import com.artemis.Entity;
 import com.xkings.core.behavior.controller.TaskController;
 
 /**
- * Base class for the specific decorators. Decorates all the task methods except
- * for the DoAction, for commodity. (Tough any method can be decorated in the
- * base classes with no problem, they are decorated by default so the programmer
- * does not forget)
- *
+ * Base class for the specific decorators. Decorates all the task methods except for the
+ * DoAction, for commodity. (Tough any method can be decorated in the base classes with no
+ * problem, they are decorated by default so the programmer does not forget)
  */
 public abstract class TaskDecorator<T> extends Task<T> {
     /**
@@ -20,8 +17,7 @@ public abstract class TaskDecorator<T> extends Task<T> {
     /**
      * Creates a new instance of the Decorator class
      *
-     * @param task
-     *            Task to decorate
+     * @param task Task to decorate
      */
     public TaskDecorator(Task task) {
         InitTask(task);
@@ -30,8 +26,7 @@ public abstract class TaskDecorator<T> extends Task<T> {
     /**
      * Initializes the task reference
      *
-     * @param task
-     *            Task to decorate
+     * @param task Task to decorate
      */
     private void InitTask(Task task) {
         this.task = task;

@@ -40,8 +40,10 @@ public class ScreenText {
     public void render(SpriteBatch sb) {
         sb.begin();
         for (int i = 0; i < buffer.size(); i++) {
-            float x = orientation == BitmapFont.HAlignment.RIGHT ? Gdx.graphics.getWidth() - OFFSET : OFFSET;
-            font.drawMultiLine(sb, buffer.get(i), x, Gdx.graphics.getHeight() - OFFSET * (i + 1), 0, orientation);
+            float x = orientation == BitmapFont.HAlignment.RIGHT ?
+                    Gdx.graphics.getWidth() - OFFSET : OFFSET;
+            font.drawMultiLine(sb, buffer.get(i), x,
+                    Gdx.graphics.getHeight() - OFFSET * (i + 1), 0, orientation);
         }
         buffer.clear();
         sb.end();

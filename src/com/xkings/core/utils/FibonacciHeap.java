@@ -131,9 +131,8 @@ public final class FibonacciHeap<T> {
     private int mSize = 0;
 
     /**
-     * Inserts the specified element into the Fibonacci heap with the specified
-     * priority.  Its priority must be a valid double, so you cannot set the
-     * priority to NaN.
+     * Inserts the specified element into the Fibonacci heap with the specified priority.
+     * Its priority must be a valid double, so you cannot set the priority to NaN.
      *
      * @param value    The value to insert.
      * @param priority Its priority, which must be valid.
@@ -158,9 +157,8 @@ public final class FibonacciHeap<T> {
     }
 
     /**
-     * Returns an Entry object corresponding to the minimum element of the
-     * Fibonacci heap, throwing a NoSuchElementException if the heap is
-     * empty.
+     * Returns an Entry object corresponding to the minimum element of the Fibonacci heap,
+     * throwing a NoSuchElementException if the heap is empty.
      *
      * @return The smallest element of the heap.
      * @throws java.util.NoSuchElementException If the heap is empty.
@@ -189,16 +187,14 @@ public final class FibonacciHeap<T> {
     }
 
     /**
-     * Given two Fibonacci heaps, returns a new Fibonacci heap that pointInsidePolygon
-     * all of the elements of the two heaps.  Each of the input heaps is
-     * destructively modified by having all its elements removed.  You can
-     * continue to use those heaps, but be aware that they will be empty
-     * after this call completes.
+     * Given two Fibonacci heaps, returns a new Fibonacci heap that pointInsidePolygon all
+     * of the elements of the two heaps.  Each of the input heaps is destructively
+     * modified by having all its elements removed.  You can continue to use those heaps,
+     * but be aware that they will be empty after this call completes.
      *
      * @param one The first Fibonacci heap to merge.
      * @param two The second Fibonacci heap to merge.
-     * @return A new FibonacciHeap containing all of the elements of both
-     * heaps.
+     * @return A new FibonacciHeap containing all of the elements of both heaps.
      */
     public static <T> FibonacciHeap<T> merge(FibonacciHeap<T> one, FibonacciHeap<T> two) {
         /* Create a new FibonacciHeap to hold the result. */
@@ -223,8 +219,8 @@ public final class FibonacciHeap<T> {
     }
 
     /**
-     * Dequeues and returns the minimum element of the Fibonacci heap.  If the
-     * heap is empty, this throws a NoSuchElementException.
+     * Dequeues and returns the minimum element of the Fibonacci heap.  If the heap is
+     * empty, this throws a NoSuchElementException.
      *
      * @return The smallest element of the Fibonacci heap.
      * @throws java.util.NoSuchElementException If the heap is empty.
@@ -302,8 +298,10 @@ public final class FibonacciHeap<T> {
          * list is empty or while the current element isn't the first element
          * of that list.
          */
-        for (Entry<T> curr = mMin; toVisit.isEmpty() || toVisit.get(0) != curr; curr = curr.mNext)
+        for (Entry<T> curr = mMin; toVisit.isEmpty() || toVisit.get(0) != curr;
+             curr = curr.mNext) {
             toVisit.add(curr);
+        }
 
         /* Traverse this list and perform the appropriate unioning steps. */
         for (Entry<T> curr : toVisit) {
@@ -367,23 +365,25 @@ public final class FibonacciHeap<T> {
     }
 
     /**
-     * Decreases the key of the specified element to the new priority.  If the
-     * new priority is greater than the old priority, this function throws an
-     * IllegalArgumentException.  The new priority must be a finite double,
-     * so you cannot set the priority to be NaN, or +/- infinity.  Doing
-     * so also throws an IllegalArgumentException.
+     * Decreases the key of the specified element to the new priority.  If the new
+     * priority is greater than the old priority, this function throws an
+     * IllegalArgumentException.  The new priority must be a finite double, so you cannot
+     * set the priority to be NaN, or +/- infinity.  Doing so also throws an
+     * IllegalArgumentException.
      * <p/>
-     * It is assumed that the entry belongs in this heap.  For efficiency
-     * reasons, this is not checked at runtime.
+     * It is assumed that the entry belongs in this heap.  For efficiency reasons, this is
+     * not checked at runtime.
      *
      * @param entry       The element whose priority should be decreased.
      * @param newPriority The new priority to associate with this entry.
-     * @throws IllegalArgumentException If the new priority exceeds the old
-     *                                  priority, or if the argument is not a finite double.
+     * @throws IllegalArgumentException If the new priority exceeds the old priority, or
+     *                                  if the argument is not a finite double.
      */
     public void decreaseKey(Entry<T> entry, double newPriority) {
         checkPriority(newPriority);
-        if (newPriority > entry.mPriority) throw new IllegalArgumentException("New priority exceeds old.");
+        if (newPriority > entry.mPriority) {
+            throw new IllegalArgumentException("New priority exceeds old.");
+        }
 
         /* Forward this to a helper function. */
         decreaseKeyUnchecked(entry, newPriority);
@@ -392,8 +392,8 @@ public final class FibonacciHeap<T> {
     /**
      * Deletes this Entry from the Fibonacci heap that pointInsidePolygon it.
      * <p/>
-     * It is assumed that the entry belongs in this heap.  For efficiency
-     * reasons, this is not checked at runtime.
+     * It is assumed that the entry belongs in this heap.  For efficiency reasons, this is
+     * not checked at runtime.
      *
      * @param entry The entry to delete.
      */
@@ -408,27 +408,27 @@ public final class FibonacciHeap<T> {
     }
 
     /**
-     * Utility function which, given a user-specified priority, checks whether
-     * it's a valid double and throws an IllegalArgumentException otherwise.
+     * Utility function which, given a user-specified priority, checks whether it's a
+     * valid double and throws an IllegalArgumentException otherwise.
      *
      * @param priority The user's specified priority.
      * @throws IllegalArgumentException If it is not valid.
      */
     private void checkPriority(double priority) {
-        if (Double.isNaN(priority)) throw new IllegalArgumentException(priority + " is invalid.");
+        if (Double.isNaN(priority)) {
+            throw new IllegalArgumentException(priority + " is invalid.");
+        }
     }
 
     /**
-     * Utility function which, given two pointers into disjoint circularly-
-     * linked lists, merges the two lists together into one circularly-linked
-     * list in O(1) time.  Because the lists may be empty, the return value
-     * is the only pointer that's guaranteed to be to an element of the
-     * resulting list.
+     * Utility function which, given two pointers into disjoint circularly- linked lists,
+     * merges the two lists together into one circularly-linked list in O(1) time.
+     * Because the lists may be empty, the return value is the only pointer that's
+     * guaranteed to be to an element of the resulting list.
      * <p/>
-     * This function assumes that one and two are the minimum elements of the
-     * lists they are in, and returns a pointer to whichever is smaller.  If
-     * this condition does not hold, the return value is some arbitrary pointer
-     * into the doubly-linked list.
+     * This function assumes that one and two are the minimum elements of the lists they
+     * are in, and returns a pointer to whichever is smaller.  If this condition does not
+     * hold, the return value is some arbitrary pointer into the doubly-linked list.
      *
      * @param one A pointer into one of the two linked lists.
      * @param two A pointer into the other of the two linked lists.
@@ -488,8 +488,8 @@ public final class FibonacciHeap<T> {
     }
 
     /**
-     * Decreases the key of a node in the tree without doing any checking to ensure
-     * that the new priority is valid.
+     * Decreases the key of a node in the tree without doing any checking to ensure that
+     * the new priority is valid.
      *
      * @param entry    The node whose key should be decreased.
      * @param priority The node's new priority.
@@ -503,7 +503,9 @@ public final class FibonacciHeap<T> {
          * that decreases the key to -infinity, it's guaranteed to cut the node
          * from its parent.
          */
-        if (entry.mParent != null && entry.mPriority <= entry.mParent.mPriority) cutNode(entry);
+        if (entry.mParent != null && entry.mPriority <= entry.mParent.mPriority) {
+            cutNode(entry);
+        }
 
         /* If our new value is the new min, mark it as such.  Note that if we
          * ended up decreasing the key in a way that ties the current minimum
@@ -513,8 +515,8 @@ public final class FibonacciHeap<T> {
     }
 
     /**
-     * Cuts a node from its parent.  If the parent was already marked, recursively
-     * cuts that node from its parent as well.
+     * Cuts a node from its parent.  If the parent was already marked, recursively cuts
+     * that node from its parent as well.
      *
      * @param entry The node to cut from its parent.
      */
@@ -560,8 +562,11 @@ public final class FibonacciHeap<T> {
         /* Mark the parent and recursively cut it if it's already been
          * marked.
          */
-        if (entry.mParent.mIsMarked) cutNode(entry.mParent);
-        else entry.mParent.mIsMarked = true;
+        if (entry.mParent.mIsMarked) {
+            cutNode(entry.mParent);
+        } else {
+            entry.mParent.mIsMarked = true;
+        }
 
         /* Clear the relocated node's parent; it's now a root. */
         entry.mParent = null;

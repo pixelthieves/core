@@ -4,18 +4,23 @@ package com.xkings.core.behavior;
  * Time step class, for regulating update speed.
  */
 public class Ticker {
-    /** Number of ticks between updates. */
+    /**
+     * Number of ticks between updates.
+     */
     private final int maxCount;
-    /** Whether or not to repeat updates. */
+    /**
+     * Whether or not to repeat updates.
+     */
     private final boolean repeat;
-    /** Current tick count */
+    /**
+     * Current tick count
+     */
     private int count = 0;
 
     /**
      * Creates a new instance of the Ticker class
      *
-     * @param maxCount
-     *            number of ticks between updates
+     * @param maxCount number of ticks between updates
      */
     public Ticker(int maxCount, boolean repeat) {
         this.maxCount = maxCount;

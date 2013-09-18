@@ -46,7 +46,8 @@ public class Param {
 
     @Override
     public String toString() {
-        return "Param [trigger=" + trigger + ", args=" + Arrays.toString(args.toArray()) + "]";
+        return "Param [trigger=" + trigger + ", args=" + Arrays.toString(args.toArray()) +
+                "]";
     }
 
 }

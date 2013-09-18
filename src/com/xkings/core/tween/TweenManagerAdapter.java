@@ -4,9 +4,7 @@ import aurelienribon.tweenengine.TweenManager;
 import com.xkings.core.logic.Updateable;
 
 /**
- * User: Tomas <br>
- * Date: 7/22/13 <br>
- * Time: 2:32 PM <br>
+ * User: Tomas <br> Date: 7/22/13 <br> Time: 2:32 PM <br>
  */
 public class TweenManagerAdapter extends TweenManager implements Updateable {
     private boolean active = true;

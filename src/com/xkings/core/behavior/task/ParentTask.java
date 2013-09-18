@@ -1,16 +1,13 @@
 package com.xkings.core.behavior.task;
 
 
-import com.artemis.Entity;
 import com.xkings.core.behavior.controller.ParentTaskController;
-import com.xkings.core.behavior.controller.TaskController;
 
 /**
- * Inner node of the behavior tree, a flow director node, that selects a child
- * to be executed next.
- *
+ * Inner node of the behavior tree, a flow director node, that selects a child to be
+ * executed next.
+ * <p/>
  * Sets a specific kind of TaskController for these kinds of tasks.
- *
  */
 public abstract class ParentTask<T> extends Task<T> {
     /**

@@ -1,7 +1,6 @@
 package com.xkings.core.behavior.task;
 
 
-import com.artemis.Entity;
 import com.xkings.core.behavior.controller.TaskController;
 
 public abstract class Task<T> {

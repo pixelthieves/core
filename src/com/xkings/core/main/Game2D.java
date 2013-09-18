@@ -3,7 +3,9 @@ package com.xkings.core.main;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
-/** Skeletal implementation for a 2D Game */
+/**
+ * Skeletal implementation for a 2D Game
+ */
 
 public abstract class Game2D implements ApplicationListener {
     private OrthographicCamera camera;
@@ -17,8 +19,8 @@ public abstract class Game2D implements ApplicationListener {
     @Override
     public void render() {
         if (!initialize) {
-        camera.update();
-        renderInternal();
+            camera.update();
+            renderInternal();
         }
     }
 

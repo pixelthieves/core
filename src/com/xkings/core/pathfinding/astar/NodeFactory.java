@@ -21,8 +21,7 @@ package com.xkings.core.pathfinding.astar;
  * A Factory which creates new instances of an implementation of the
  * <code>AbstractNode</code> at given coordinates.
  * <p/>
- * Must be implemented and given to <code>Map</code> instance on
- * construction.
+ * Must be implemented and given to <code>Map</code> instance on construction.
  *
  * @version 1.0
  * @see AbstractNode
@@ -30,10 +29,9 @@ package com.xkings.core.pathfinding.astar;
 public interface NodeFactory {
 
     /**
-     * creates new instances of an implementation of the
-     * <code>AbstractNode</code>.
-     * In an implementation, it should return a new node with its position
-     * set to the given x and y values.
+     * creates new instances of an implementation of the <code>AbstractNode</code>. In an
+     * implementation, it should return a new node with its position set to the given x
+     * and y values.
      *
      * @param x position on the x-axis
      * @param y position on the y-axis

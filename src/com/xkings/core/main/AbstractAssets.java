@@ -8,11 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Skeletal implementation with useful methods for handling textures.
- * Created by Tomas on 9/5/13.
+ * Skeletal implementation with useful methods for handling textures. Created by Tomas on
+ * 9/5/13.
  */
 public class AbstractAssets {
-    private static HashMap<String, Array<TextureAtlas.AtlasRegion>> cachedTextures = new HashMap<String, Array<TextureAtlas.AtlasRegion>>();
+    private static HashMap<String, Array<TextureAtlas.AtlasRegion>> cachedTextures =
+            new HashMap<String, Array<TextureAtlas.AtlasRegion>>();
     private static List<TextureAtlas> atlases = new ArrayList<TextureAtlas>();
     private static TextureAtlas current = null;
     private static int position = 1;
@@ -52,7 +53,8 @@ public class AbstractAssets {
         if (result.size > index) {
             return result.get(index);
         } else {
-            throw new IllegalArgumentException("Texture [" + name + "_" + index + "] is not available.");
+            throw new IllegalArgumentException(
+                    "Texture [" + name + "_" + index + "] is not available.");
         }
     }
 
@@ -72,7 +74,8 @@ public class AbstractAssets {
         if (result != null) {
             return result;
         } else {
-            throw new IllegalArgumentException("Texture [" + name + "] is not available.");
+            throw new IllegalArgumentException(
+                    "Texture [" + name + "] is not available.");
         }
 
     }

@@ -4,9 +4,7 @@ import aurelienribon.tweenengine.TweenAccessor;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 /**
- * User: Tomas <br>
- * Date: 7/22/13 <br>
- * Time: 2:26 PM <br>
+ * User: Tomas <br> Date: 7/22/13 <br> Time: 2:26 PM <br>
  */
 public class CameraAccessor implements TweenAccessor<OrthographicCamera> {
 

@@ -19,7 +19,9 @@ public class GestureProcessor extends GestureDetector.GestureAdapter {
 
     @Override
     public boolean zoom(float initialDistance, float distance) {
-        camera.zoom(camera.getCamera().zoom + (distance - initialDistance) / Math.max(camera.getCamera().viewportWidth, camera.getCamera().viewportHeight));
+        camera.zoom(camera.getCamera().zoom + (distance - initialDistance) /
+                Math.max(camera.getCamera().viewportWidth,
+                        camera.getCamera().viewportHeight));
         return true;
     }
 

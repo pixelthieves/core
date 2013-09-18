@@ -4,8 +4,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 
 /**
- * Camera handler without any constrains.
- * Created by Tomas on 9/7/13.
+ * Camera handler without any constrains. Created by Tomas on 9/7/13.
  */
 
 public class BoundlessCameraHandler implements CameraHandler {
@@ -21,7 +20,8 @@ public class BoundlessCameraHandler implements CameraHandler {
         this(camera, ZOOM_MAX, 0.1f);
     }
 
-    public BoundlessCameraHandler(OrthographicCamera camera, float ZOOM_MAX, float ZOOM_MIN) {
+    public BoundlessCameraHandler(OrthographicCamera camera, float ZOOM_MAX,
+                                  float ZOOM_MIN) {
         this.ZOOM_MAX = ZOOM_MAX;
         this.ZOOM_MIN = ZOOM_MIN;
         this.camera = camera;

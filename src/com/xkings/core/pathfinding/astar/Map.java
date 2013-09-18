@@ -36,12 +36,14 @@ import java.util.List;
 /**
  * AbstractNodehis class represents a simple map.
  * <p/>
- * It's width as well as hight can be set up on construction. AbstractNodehe map can represent nodes that are walkable or not, it can be printed to sto,
- * and it can calculate the shortest path between two nodes avoiding walkable nodes.
+ * It's width as well as hight can be set up on construction. AbstractNodehe map can
+ * represent nodes that are walkable or not, it can be printed to sto, and it can
+ * calculate the shortest path between two nodes avoiding walkable nodes.
  * <p/>
  * <p/>
- * Usage of this package: Create a node class which extends AbstractNode and implements the sethCosts method. Create a NodeFactory that implements the
- * NodeFactory interface. Create Map instance with those created classes.
+ * Usage of this package: Create a node class which extends AbstractNode and implements
+ * the sethCosts method. Create a NodeFactory that implements the NodeFactory interface.
+ * Create Map instance with those created classes.
  *
  * @param <AbstractNode>
  * @version 1.0
@@ -147,7 +149,8 @@ public class Map {
     /**
      * prints map to sto. Feel free to override this method.
      * <p/>
-     * a player will be represented as "o", an unwakable terrain as "#". Movement penalty will not be displayed.
+     * a player will be represented as "o", an unwakable terrain as "#". Movement penalty
+     * will not be displayed.
      */
     public void drawMap() {
         for (int i = 0; i <= width; i++) {
@@ -199,10 +202,12 @@ public class Map {
     /**
      * finds an allowed path from start to goal coordinates on this map.
      * <p/>
-     * AbstractNodehis method uses the A* algorithm. AbstractNodehe hCosts value is calculated in the given Node implementation.
+     * AbstractNodehis method uses the A* algorithm. AbstractNodehe hCosts value is
+     * calculated in the given Node implementation.
      * <p/>
-     * AbstractNodehis method will return a LinkedList containing the start node at the beginning followed by the calculated shortest allowed path ending
-     * with the end node.
+     * AbstractNodehis method will return a LinkedList containing the start node at the
+     * beginning followed by the calculated shortest allowed path ending with the end
+     * node.
      * <p/>
      * If no allowed path exists, an empty list will be returned.
      * <p/>
@@ -231,7 +236,8 @@ public class Map {
             closedList.add(current); // add current node to closed list
             openList.remove(current); // delete current node from open list
 
-            if ((current.getxPosition() == newX) && (current.getyPosition() == newY)) { // found goal
+            if ((current.getxPosition() == newX) &&
+                    (current.getyPosition() == newY)) { // found goal
                 return calcPath(nodes[oldX][oldY], current);
             }
 
@@ -240,14 +246,20 @@ public class Map {
             for (int i = 0; i < adjacentNodes.size(); i++) {
                 AbstractNode currentAdj = adjacentNodes.get(i);
                 if (!openList.contains(currentAdj)) { // node is not in openList
-                    currentAdj.setPrevious(current); // set current node as previous for this node
-                    currentAdj.sethCosts(nodes[newX][newY]); // set h costs of this node (estimated costs to goal)
-                    currentAdj.setgCosts(current); // set g costs of this node (costs from start to this node)
+                    currentAdj.setPrevious(
+                            current); // set current node as previous for this node
+                    currentAdj.sethCosts(
+                            nodes[newX][newY]); // set h costs of this node (estimated costs to goal)
+                    currentAdj.setgCosts(
+                            current); // set g costs of this node (costs from start to this node)
                     openList.add(currentAdj); // add node to openList
                 } else { // node is in openList
-                    if (currentAdj.getgCosts() > currentAdj.calculategCosts(current)) { // costs from current node are cheaper than previous costs
-                        currentAdj.setPrevious(current); // set current node as previous for this node
-                        currentAdj.setgCosts(current); // set g costs of this node (costs from start to this node)
+                    if (currentAdj.getgCosts() > currentAdj.calculategCosts(
+                            current)) { // costs from current node are cheaper than previous costs
+                        currentAdj.setPrevious(
+                                current); // set current node as previous for this node
+                        currentAdj.setgCosts(
+                                current); // set g costs of this node (costs from start to this node)
                     }
                 }
             }
@@ -263,20 +275,23 @@ public class Map {
      * wrapper for findpath.
      */
     public final List<Vector3> findPath(Vector2 start, Vector2 goal) {
-        List<AbstractNode> path = findPath((int) start.x, (int) start.y, (int) goal.x, (int) goal.y);
+        List<AbstractNode> path =
+                findPath((int) start.x, (int) start.y, (int) goal.x, (int) goal.y);
         List<Vector3> result = null;
         if (path != null) {
             result = new ArrayList<Vector3>();
             for (int i = 0; i < path.size(); i++) {
                 AbstractNode pathPoint = path.get(i);
-                result.add(new Vector3(pathPoint.getxPosition(), pathPoint.getyPosition(), 0));
+                result.add(new Vector3(pathPoint.getxPosition(), pathPoint.getyPosition(),
+                        0));
             }
         }
         return result;
     }
 
     /**
-     * calculates the found path between two points according to their given <code>previousNode</code> field.
+     * calculates the found path between two points according to their given
+     * <code>previousNode</code> field.
      *
      * @param start
      * @param goal
@@ -317,7 +332,8 @@ public class Map {
     }
 
     /**
-     * returns a LinkedList with nodes adjacent to the given node. if those exist, are walkable and are not already in the closedList!
+     * returns a LinkedList with nodes adjacent to the given node. if those exist, are
+     * walkable and are not already in the closedList!
      */
     private List<AbstractNode> getAdjacent(AbstractNode node) {
         // AbstractNodeODO make loop
@@ -359,7 +375,8 @@ public class Map {
             if (x < width && y < hight) {
                 temp = northEastNode;
                 if (temp.isWalkable() && !closedList.contains(temp)) {
-                    if (CAN_CUT_CORNERS || northNode.isWalkable() && eastNode.isWalkable()) {
+                    if (CAN_CUT_CORNERS ||
+                            northNode.isWalkable() && eastNode.isWalkable()) {
                         temp.setIsDiagonaly(true);
                         adj.add(temp);
                     }
@@ -369,7 +386,8 @@ public class Map {
             if (x > 0 && y > 0) {
                 temp = southWestNode;
                 if (temp.isWalkable() && !closedList.contains(temp)) {
-                    if (CAN_CUT_CORNERS || southNode.isWalkable() && westNode.isWalkable()) {
+                    if (CAN_CUT_CORNERS ||
+                            southNode.isWalkable() && westNode.isWalkable()) {
                         temp.setIsDiagonaly(true);
                         adj.add(temp);
                     }
@@ -379,7 +397,8 @@ public class Map {
             if (x > 0 && y < hight) {
                 temp = northWestNode;
                 if (temp.isWalkable() && !closedList.contains(temp)) {
-                    if (CAN_CUT_CORNERS || northNode.isWalkable() && westNode.isWalkable()) {
+                    if (CAN_CUT_CORNERS ||
+                            northNode.isWalkable() && westNode.isWalkable()) {
                         temp.setIsDiagonaly(true);
                         adj.add(temp);
                     }
@@ -389,7 +408,8 @@ public class Map {
             if (x < width && y > 0) {
                 temp = southEastNode;
                 if (temp.isWalkable() && !closedList.contains(temp)) {
-                    if (CAN_CUT_CORNERS || southNode.isWalkable() && eastNode.isWalkable()) {
+                    if (CAN_CUT_CORNERS ||
+                            southNode.isWalkable() && eastNode.isWalkable()) {
                         temp.setIsDiagonaly(true);
                         adj.add(temp);
                     }

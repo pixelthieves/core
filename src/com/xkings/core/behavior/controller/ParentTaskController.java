@@ -8,8 +8,8 @@ import java.util.List;
 
 
 /**
- * This class extends the TaskController class to add support for child tasks and their
- * logic. Used together with ParentTask.
+ * This class extends the TaskController class to add support for child tasks and their logic. Used together with
+ * ParentTask.
  */
 public class ParentTaskController extends TaskController {
     /**

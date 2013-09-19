@@ -12,8 +12,7 @@ import java.util.HashMap;
  */
 public class Shader {
     private static Shader instance;
-    private final HashMap<String, ShaderStructure> map =
-            new HashMap<String, ShaderStructure>();
+    private final HashMap<String, ShaderStructure> map = new HashMap<String, ShaderStructure>();
 
     private Shader() {
         FileHandle dirHandle;
@@ -75,8 +74,7 @@ public class Shader {
     private ShaderStructure getStructure(String name) {
         ShaderStructure value = map.get(name);
         if (value == null) {
-            throw new IllegalArgumentException(
-                    "Specified Shader does not exists: " + name);
+            throw new IllegalArgumentException("Specified Shader does not exists: " + name);
         }
         return value;
     }

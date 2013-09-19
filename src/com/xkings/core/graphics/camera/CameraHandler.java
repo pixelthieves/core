@@ -10,8 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 public interface CameraHandler {
 
     /**
-     * Move the camera around. Camera position will be adjusted based on the zoom level of
-     * camera.
+     * Move the camera around. Camera position will be adjusted based on the zoom level of camera.
      *
      * @param x the amount camera will be moved on x-axis.
      * @param y the amount camera will be moved on y-axis.

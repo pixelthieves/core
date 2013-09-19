@@ -4,8 +4,7 @@ package com.xkings.core.behavior.task;
 import com.xkings.core.behavior.controller.ParentTaskController;
 
 /**
- * Inner node of the behavior tree, a flow director node, that selects a child to be
- * executed next.
+ * Inner node of the behavior tree, a flow director node, that selects a child to be executed next.
  * <p/>
  * Sets a specific kind of TaskController for these kinds of tasks.
  */

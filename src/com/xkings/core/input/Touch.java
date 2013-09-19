@@ -104,8 +104,7 @@ public class Touch extends Vector2 {
     private Vector2 correctInput(OrthographicCamera camera) {
         Vector2 result = new Vector2();
         result.x = (this.x - camera.viewportWidth / 2f) * camera.zoom + camera.position.x;
-        result.y =
-                (this.y - camera.viewportHeight / 2f) * camera.zoom + camera.position.y;
+        result.y = (this.y - camera.viewportHeight / 2f) * camera.zoom + camera.position.y;
         return result;
     }
 

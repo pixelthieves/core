@@ -33,8 +33,7 @@ public class UpdateFilter<T> extends TaskDecorator<T> {
     }
 
     /**
-     * Updates the decorated task only if the required time since the last update has
-     * elapsed.
+     * Updates the decorated task only if the required time since the last update has elapsed.
      */
     @Override
     public boolean doAction(T entity) {

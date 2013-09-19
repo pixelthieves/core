@@ -18,13 +18,12 @@
 package com.xkings.core.pathfinding.astar;
 
 /**
- * This class represents an AbstractNode. It has all the appropriate fields as well as
- * getter and setter to be used by the A* algorithm.
+ * This class represents an AbstractNode. It has all the appropriate fields as well as getter and setter to be used by
+ * the A* algorithm.
  * <p/>
  * <p/>
- * An <code>AbstractNode</code> has x- and y-coordinates and can be walkable or not. A
- * previous AbstractNode may be set, as well as the <code>fCosts</code>,
- * <code>gCosts</code> and <code>hCosts</code>.
+ * An <code>AbstractNode</code> has x- and y-coordinates and can be walkable or not. A previous AbstractNode may be set,
+ * as well as the <code>fCosts</code>, <code>gCosts</code> and <code>hCosts</code>.
  * <p/>
  * <p/>
  * <code>fCosts</code>: <code>gCosts</code> + <code>hCosts</code>
@@ -40,8 +39,7 @@ package com.xkings.core.pathfinding.astar;
  * <p/>
  *
  * @version 1.0
- * @see MapNode#sethCosts(AbstractNode endNode) example Implementation using manhatten
- * method
+ * @see MapNode#sethCosts(AbstractNode endNode) example Implementation using manhatten method
  * <p/>
  */
 public abstract class AbstractNode {
@@ -103,8 +101,8 @@ public abstract class AbstractNode {
     }
 
     /**
-     * returns weather or not the move from the <code>previousAbstractNode</code> was
-     * diagonally. If it is not diagonal, it is sideways.
+     * returns weather or not the move from the <code>previousAbstractNode</code> was diagonally. If it is not diagonal,
+     * it is sideways.
      *
      * @return
      */
@@ -113,8 +111,8 @@ public abstract class AbstractNode {
     }
 
     /**
-     * sets weather or not the move from the <code>previousAbstractNode</code> was
-     * diagonally. If it is not diagonal, it is sideways.
+     * sets weather or not the move from the <code>previousAbstractNode</code> was diagonally. If it is not diagonal, it
+     * is sideways.
      *
      * @param isDiagonaly
      */
@@ -206,8 +204,7 @@ public abstract class AbstractNode {
     }
 
     /**
-     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this
-     * AbstractNode.
+     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this AbstractNode.
      *
      * @param gCosts the gCosts to set
      */
@@ -216,9 +213,8 @@ public abstract class AbstractNode {
     }
 
     /**
-     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this
-     * AbstractNode given the previous AbstractNode as well as the basic cost from it to
-     * this AbstractNode.
+     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this AbstractNode given the previous
+     * AbstractNode as well as the basic cost from it to this AbstractNode.
      *
      * @param previousAbstractNode
      * @param basicCost
@@ -228,12 +224,11 @@ public abstract class AbstractNode {
     }
 
     /**
-     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this
-     * AbstractNode given the previous AbstractNode.
+     * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this AbstractNode given the previous
+     * AbstractNode.
      * <p/>
-     * It will assume <code>BASICMOVEMENTCOST</code> as the cost from
-     * <code>previousAbstractNode</code> to itself if the movement is not diagonally,
-     * otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
+     * It will assume <code>BASICMOVEMENTCOST</code> as the cost from <code>previousAbstractNode</code> to itself if the
+     * movement is not diagonally, otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
      * diagonally is set in the Map class method which finds the adjacent AbstractNodes.
      *
      * @param previousAbstractNode
@@ -249,9 +244,8 @@ public abstract class AbstractNode {
     /**
      * calculates - but does not set - g costs.
      * <p/>
-     * It will assume <code>BASICMOVEMENTCOST</code> as the cost from
-     * <code>previousAbstractNode</code> to itself if the movement is not diagonally,
-     * otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
+     * It will assume <code>BASICMOVEMENTCOST</code> as the cost from <code>previousAbstractNode</code> to itself if the
+     * movement is not diagonally, otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
      * diagonally is set in the Map class method which finds the adjacent AbstractNodes.
      *
      * @param previousAbstractNode
@@ -297,8 +291,7 @@ public abstract class AbstractNode {
     }
 
     /**
-     * calculates hCosts for this AbstractNode to a given end AbstractNode. Uses Manhatten
-     * method.
+     * calculates hCosts for this AbstractNode to a given end AbstractNode. Uses Manhatten method.
      *
      * @param endAbstractNode
      */

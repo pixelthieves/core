@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Skeletal class for all entities, some of the work, such is creating the entity, is
- * already done.
+ * Skeletal class for all entities, some of the work, such is creating the entity, is already done.
  */
 public abstract class ConcreteEntity {
     private final List<Component> bag = new ArrayList<Component>();

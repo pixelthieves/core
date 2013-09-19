@@ -4,11 +4,9 @@ package com.xkings.core.behavior.controller;
 import com.xkings.core.behavior.task.Task;
 
 /**
- * Class added by composition to any task, to keep track of the Task state and logic
- * flow.
+ * Class added by composition to any task, to keep track of the Task state and logic flow.
  * <p/>
- * This state-control class is separated from the Task class so the Decorators have a
- * chance at compile-time security.
+ * This state-control class is separated from the Task class so the Decorators have a chance at compile-time security.
  *
  * @author Ying
  */

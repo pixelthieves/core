@@ -1,8 +1,7 @@
 package com.xkings.core.pathfinding.astar;
 
 /**
- * Linked nodes are backed by footprint, so they always read current value. Created by
- * Tomas on 9/15/13.
+ * Linked nodes are backed by footprint, so they always read current value. Created by Tomas on 9/15/13.
  */
 public class LinkedNode extends MapNode {
     private final boolean footprint[][];

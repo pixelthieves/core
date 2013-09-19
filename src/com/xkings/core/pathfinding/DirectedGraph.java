@@ -18,8 +18,7 @@ public final class DirectedGraph<T> implements Iterable<T> {
     private final Map<T, Map<T, Double>> mGraph = new HashMap<T, Map<T, Double>>();
 
     /**
-     * Adds a new node to the graph. If the node already exists, this function is a
-     * no-op.
+     * Adds a new node to the graph. If the node already exists, this function is a no-op.
      *
      * @param node The node to add.
      * @return Whether or not the node was added.
@@ -34,16 +33,14 @@ public final class DirectedGraph<T> implements Iterable<T> {
     }
 
     /**
-     * Given a start node, destination, and length, adds an arc from the start node to the
-     * destination of the length. If an arc already existed, the length is updated to the
-     * specified value. If either endpoint does not exist in the graph, throws a
-     * NoSuchElementException.
+     * Given a start node, destination, and length, adds an arc from the start node to the destination of the length. If
+     * an arc already existed, the length is updated to the specified value. If either endpoint does not exist in the
+     * graph, throws a NoSuchElementException.
      *
      * @param start  The start node.
      * @param dest   The destination node.
      * @param length The length of the edge.
-     * @throws java.util.NoSuchElementException If either the start or destination nodes
-     *                                          do not exist.
+     * @throws java.util.NoSuchElementException If either the start or destination nodes do not exist.
      */
     public void addEdge(T start, T dest, double length) {
         /* Confirm both endpoints exist. */
@@ -56,9 +53,8 @@ public final class DirectedGraph<T> implements Iterable<T> {
     }
 
     /**
-     * Removes the edge from start to dest from the graph. If the edge does not exist,
-     * this operation is a no-op. If either endpoint does not exist, this throws a
-     * NoSuchElementException.
+     * Removes the edge from start to dest from the graph. If the edge does not exist, this operation is a no-op. If
+     * either endpoint does not exist, this throws a NoSuchElementException.
      *
      * @param start The start node.
      * @param dest  The destination node.
@@ -74,8 +70,8 @@ public final class DirectedGraph<T> implements Iterable<T> {
     }
 
     /**
-     * Given a node in the graph, returns an immutable view of the edges leaving that
-     * node, as a map from endpoints to costs.
+     * Given a node in the graph, returns an immutable view of the edges leaving that node, as a map from endpoints to
+     * costs.
      *
      * @param node The node whose edges should be queried.
      * @return An immutable view of the edges leaving that node.

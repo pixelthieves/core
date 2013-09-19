@@ -4,9 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Internal clock system that triggers system function in an interval. Clock can be
- * triggered manually or by a {@link Thread}. This system ensures that simulation will run
- * at constant speed, eliminating spikes.
+ * Internal clock system that triggers system function in an interval. Clock can be triggered manually or by a {@link
+ * Thread}. This system ensures that simulation will run at constant speed, eliminating spikes.
  */
 public class Clock implements Runnable {
 
@@ -31,8 +30,7 @@ public class Clock implements Runnable {
         initTime = System.currentTimeMillis();
     }
 
-    public static Clock createInstance(String name, boolean sleep,
-                                       boolean manualExecution) {
+    public static Clock createInstance(String name, boolean sleep, boolean manualExecution) {
         Clock instance = new Clock(name, sleep, manualExecution);
         if (!manualExecution) {
             new Thread(instance, instance.getName()).start();
@@ -41,8 +39,7 @@ public class Clock implements Runnable {
     }
 
     /**
-     * If manualExecution is set to {@code true} one cycle is triggered, infinite while
-     * cycle is triggered otherwise.
+     * If manualExecution is set to {@code true} one cycle is triggered, infinite while cycle is triggered otherwise.
      * <p/>
      * {@inheritDoc}
      */
@@ -62,8 +59,7 @@ public class Clock implements Runnable {
         double frameTime = (double) (newTime - currentTime) * speedMultiplier / BILLION;
         currentTime = newTime;
 
-        frameTime = Math.min(frameTime,
-                maxStep); // note: max frame time to avoid spiral of death
+        frameTime = Math.min(frameTime, maxStep); // note: max frame time to avoid spiral of death
 
         accumulator += frameTime;
 
@@ -131,8 +127,7 @@ public class Clock implements Runnable {
     /**
      * Sets speed multiplier for the game.
      *
-     * @param speedMultiplier If multiplier is greater then 1, game will run faster,
-     *                        slower if multiplier is smaller.
+     * @param speedMultiplier If multiplier is greater then 1, game will run faster, slower if multiplier is smaller.
      */
     public void setSpeedMultiplier(double speedMultiplier) {
         this.speedMultiplier = speedMultiplier;

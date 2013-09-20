@@ -30,6 +30,11 @@ public class Clock implements Runnable {
         initTime = System.currentTimeMillis();
     }
 
+    public static Clock createInstance(String name) {
+        return createInstance(name, true, false);
+    }
+
+
     public static Clock createInstance(String name, boolean sleep, boolean manualExecution) {
         Clock instance = new Clock(name, sleep, manualExecution);
         if (!manualExecution) {

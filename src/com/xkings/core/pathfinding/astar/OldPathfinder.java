@@ -41,7 +41,7 @@ import java.util.List;
  * <p/>
  * <p/>
  * Usage of this package: Create a node class which extends AbstractNode and implements the sethCosts method. Create a
- * NodeFactory that implements the NodeFactory interface. Create Map instance with those created classes.
+ * NodeFactory that implements the NodeFactory interface. Create OldPathfinder instance with those created classes.
  *
  * @param <AbstractNode>
  * @version 1.0
@@ -50,7 +50,7 @@ import java.util.List;
  * @see AbstractNode
  * @see NodeFactory
  */
-public class Map {
+public class OldPathfinder implements Pathfinder {
 
     /**
      * weather or not it is possible to walk diagonally on the map in general.
@@ -81,6 +81,7 @@ public class Map {
     private NodeFactory nodeFactory;
 
     private final boolean[][] footprint;
+    private long timestamp;
 
     /**
      * constructs a squared map with given width and hight.
@@ -91,7 +92,7 @@ public class Map {
      * @param hight
      * @param nodeFactory
      */
-    public Map(boolean[][] footprint) {
+    public OldPathfinder(boolean[][] footprint) {
         // AbstractNodeODO check parameters. width and higth should be > 0.
         this.footprint = footprint;
         this.width = footprint.length;
@@ -99,8 +100,8 @@ public class Map {
         nodes = new AbstractNode[width][hight];
     }
 
-    public void setNode(NodeFactory nf) {
-        this.nodeFactory = nf;
+    public void setNode(NodeFactory nodeFactory) {
+        this.nodeFactory = nodeFactory;
         initEmptyNodes();
     }
 
@@ -141,8 +142,13 @@ public class Map {
      */
     public final AbstractNode getNode(int x, int y) {
         // AbstractNodeODO check parameter.
-        return nodes[x][y];
+        return inRange(x, y) ? nodes[x][y] : null;
     }
+
+    private boolean inRange(int x, int y) {
+        return x >= 0 && x < footprint.length && y >= 0 && y < footprint[x].length;
+    }
+
 
     /**
      * prints map to sto. Feel free to override this method.
@@ -264,6 +270,7 @@ public class Map {
     /**
      * wrapper for findpath.
      */
+    @Override
     public final List<Vector3> findPath(Vector2 start, Vector2 goal) {
         List<AbstractNode> path = findPath((int) start.x, (int) start.y, (int) goal.x, (int) goal.y);
         List<Vector3> result = null;
@@ -361,7 +368,7 @@ public class Map {
 
             if (x < width && y < hight) {
                 temp = northEastNode;
-                if (temp.isWalkable() && !closedList.contains(temp)) {
+                if (temp != null && temp.isWalkable() && !closedList.contains(temp)) {
                     if (CAN_CUT_CORNERS || northNode.isWalkable() && eastNode.isWalkable()) {
                         temp.setIsDiagonaly(true);
                         adj.add(temp);
@@ -371,7 +378,7 @@ public class Map {
 
             if (x > 0 && y > 0) {
                 temp = southWestNode;
-                if (temp.isWalkable() && !closedList.contains(temp)) {
+                if (temp != null && temp.isWalkable() && !closedList.contains(temp)) {
                     if (CAN_CUT_CORNERS || southNode.isWalkable() && westNode.isWalkable()) {
                         temp.setIsDiagonaly(true);
                         adj.add(temp);
@@ -381,7 +388,7 @@ public class Map {
 
             if (x > 0 && y < hight) {
                 temp = northWestNode;
-                if (temp.isWalkable() && !closedList.contains(temp)) {
+                if (temp != null && temp.isWalkable() && !closedList.contains(temp)) {
                     if (CAN_CUT_CORNERS || northNode.isWalkable() && westNode.isWalkable()) {
                         temp.setIsDiagonaly(true);
                         adj.add(temp);
@@ -391,7 +398,7 @@ public class Map {
 
             if (x < width && y > 0) {
                 temp = southEastNode;
-                if (temp.isWalkable() && !closedList.contains(temp)) {
+                if (temp != null && temp.isWalkable() && !closedList.contains(temp)) {
                     if (CAN_CUT_CORNERS || southNode.isWalkable() && eastNode.isWalkable()) {
                         temp.setIsDiagonaly(true);
                         adj.add(temp);
@@ -403,7 +410,7 @@ public class Map {
     }
 
     private void testNode(List<AbstractNode> adj, AbstractNode testNode) {
-        if (testNode.isWalkable() && !closedList.contains(testNode)) {
+        if (testNode != null && testNode.isWalkable() && !closedList.contains(testNode)) {
             testNode.setIsDiagonaly(false);
             adj.add(testNode);
         }

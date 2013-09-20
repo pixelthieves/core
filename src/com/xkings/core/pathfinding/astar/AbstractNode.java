@@ -229,7 +229,7 @@ public abstract class AbstractNode {
      * <p/>
      * It will assume <code>BASICMOVEMENTCOST</code> as the cost from <code>previousAbstractNode</code> to itself if the
      * movement is not diagonally, otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
-     * diagonally is set in the Map class method which finds the adjacent AbstractNodes.
+     * diagonally is set in the OldPathfinder class method which finds the adjacent AbstractNodes.
      *
      * @param previousAbstractNode
      */
@@ -246,7 +246,7 @@ public abstract class AbstractNode {
      * <p/>
      * It will assume <code>BASICMOVEMENTCOST</code> as the cost from <code>previousAbstractNode</code> to itself if the
      * movement is not diagonally, otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
-     * diagonally is set in the Map class method which finds the adjacent AbstractNodes.
+     * diagonally is set in the OldPathfinder class method which finds the adjacent AbstractNodes.
      *
      * @param previousAbstractNode
      * @return gCosts

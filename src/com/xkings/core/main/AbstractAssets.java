@@ -1,6 +1,6 @@
 package com.xkings.core.main;
 
-import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 
@@ -92,12 +92,12 @@ public class AbstractAssets {
     /**
      * Desearilez an object.
      *
-     * @param fileHandle file containing object to be deserialized.
+     * @param fileName file containing object to be deserialized.
      * @return Newly created object.
      * @throws Exception Deserilization process was unsuccessful.
      */
-    protected static Object deserialize(FileHandle fileHandle) throws Exception {
-        return new ObjectInputStream(fileHandle.read()).readObject();
+    protected static Object deserialize(String fileName) throws Exception {
+        return new ObjectInputStream(Gdx.files.internal(fileName).read()).readObject();
     }
 
 }

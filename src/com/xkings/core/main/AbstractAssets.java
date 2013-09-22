@@ -1,8 +1,10 @@
 package com.xkings.core.main;
 
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -85,6 +87,17 @@ public class AbstractAssets {
         System.out.println(position);
         current = atlases.get(position);
         cachedTextures.clear();
+    }
+
+    /**
+     * Desearilez an object.
+     *
+     * @param fileHandle file containing object to be deserialized.
+     * @return Newly created object.
+     * @throws Exception Deserilization process was unsuccessful.
+     */
+    protected static Object deserialize(FileHandle fileHandle) throws Exception {
+        return new ObjectInputStream(fileHandle.read()).readObject();
     }
 
 }

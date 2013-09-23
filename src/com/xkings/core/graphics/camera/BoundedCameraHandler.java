@@ -12,6 +12,10 @@ import com.badlogic.gdx.math.Vector2;
 public class BoundedCameraHandler extends BoundlessCameraHandler {
     private final Rectangle bounds;
 
+    public BoundedCameraHandler(OrthographicCamera camera, int width, int height) {
+        this(camera, new Rectangle(0, 0, width, height));
+    }
+
     public BoundedCameraHandler(OrthographicCamera camera, Rectangle bounds) {
         super(camera, getMinimalZoom(camera, bounds));
         if (bounds == null) throw new IllegalArgumentException("Bounds can't be null");

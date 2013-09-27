@@ -6,7 +6,7 @@ public class ParamHolder {
 
     private final Map<String, Param> params;
 
-    public ParamHolder(String[] args) {
+    public ParamHolder(String... args) {
         params = args != null ? Param.getParams(args) : Param.getParams();
     }
 

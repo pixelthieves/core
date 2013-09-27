@@ -2,14 +2,23 @@ package com.xkings.core.main;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.xkings.core.utils.Param;
+import com.xkings.core.utils.ParamHolder;
 
 /**
  * Skeletal implementation for a 2D Game
  */
 
 public abstract class Game2D implements ApplicationListener {
+    private final ParamHolder params;
     private OrthographicCamera camera;
     private boolean initialize = true;
+    public static Param DEBUG;
+
+    protected Game2D(String... args) {
+        params = new ParamHolder(args);
+        DEBUG = params.getParam("-debug", "-d");
+    }
 
     @Override
     public void create() {

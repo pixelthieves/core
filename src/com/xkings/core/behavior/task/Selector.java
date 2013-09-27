@@ -13,10 +13,8 @@ public class Selector<T> extends ParentTask<T> {
     public boolean doAction(T object) {
         for (Task t : control.getSubtasks()) {
             t.start();
-            if (t.checkConditions(object)) {
-                if (t.doAction(object)) {
-                    return true;
-                }
+            if (t.checkConditions(object) && t.doAction(object)) {
+                return true;
             }
         }
         return false;

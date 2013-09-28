@@ -46,6 +46,10 @@ public class Blueprint {
         return new Rectangle(0, 0, data.length, data[0].length);
     }
 
+    public boolean inRange(int x, int y) {
+        return x >= 0 && x < this.getWidth() && y >= 0 && y < this.getHeight();
+    }
+
     public static Blueprint createInstanceClone(boolean[][] originalData) {
         boolean[][] data = new boolean[originalData.length][originalData[0].length];
         ArrayUtils.copyArray(originalData, data);

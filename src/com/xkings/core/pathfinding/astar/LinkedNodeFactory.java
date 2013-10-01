@@ -17,19 +17,21 @@
 
 package com.xkings.core.pathfinding.astar;
 
+import com.xkings.core.pathfinding.Blueprint;
+
 /**
  * A Factory for LinkedNode.
  */
 public class LinkedNodeFactory implements NodeFactory {
-    private final boolean[][] footprint;
+    private final Blueprint blueprint;
 
-    public LinkedNodeFactory(boolean[][] footprint) {
-        this.footprint = footprint;
+    public LinkedNodeFactory(Blueprint blueprint) {
+        this.blueprint = blueprint;
     }
 
     @Override
     public AbstractNode createNode(int x, int y) {
-        return new LinkedNode(footprint, x, y);
+        return new LinkedNode(blueprint, x, y);
     }
 
 }

@@ -1,18 +1,20 @@
 package com.xkings.core.pathfinding.astar;
 
+import com.xkings.core.pathfinding.Blueprint;
+
 /**
- * Linked nodes are backed by footprint, so they always read current value. Created by Tomas on 9/15/13.
+ * Linked nodes are backed by blueprint, so they always read current value. Created by Tomas on 9/15/13.
  */
 public class LinkedNode extends MapNode {
-    private final boolean footprint[][];
+    private final Blueprint blueprint;
 
-    public LinkedNode(boolean[][] footprint, int xPosition, int yPosition) {
+    public LinkedNode(Blueprint blueprint, int xPosition, int yPosition) {
         super(xPosition, yPosition);
-        this.footprint = footprint;
+        this.blueprint = blueprint;
     }
 
     @Override
     public boolean isWalkable() {
-        return footprint[getxPosition()][getyPosition()];
+        return blueprint.isWalkable(getxPosition(), getyPosition());
     }
 }

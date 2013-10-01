@@ -27,6 +27,7 @@ package com.xkings.core.pathfinding.astar;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.xkings.core.pathfinding.Blueprint;
 
 import java.util.*;
 
@@ -78,7 +79,7 @@ public class NewPathfinder implements Pathfinder {
      */
     private NodeFactory nodeFactory;
 
-    private final boolean[][] footprint;
+    private final Blueprint blueprint;
     private long timestamp;
 
     /**
@@ -86,16 +87,12 @@ public class NewPathfinder implements Pathfinder {
      * <p/>
      * AbstractNodehe nodes will be instanciated througth the given nodeFactory.
      *
-     * @param width
-     * @param hight
-     * @param nodeFactory
+     * @param blueprint
      */
-    public NewPathfinder(boolean[][] footprint) {
+    public NewPathfinder(Blueprint blueprint) {
         // AbstractNodeODO check parameters. width and higth should be > 0.
-        this.footprint = footprint;
-        this.width = footprint.length;
-        this.hight = footprint[0].length;
-        nodes = new AbstractNode[width][hight];
+        this.blueprint = blueprint;
+        nodes = new AbstractNode[blueprint.getWidth()][blueprint.getHeight()];
     }
 
     public void setNode(NodeFactory nf) {
@@ -110,7 +107,7 @@ public class NewPathfinder implements Pathfinder {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < hight; j++) {
                 nodes[i][j] = nodeFactory.createNode(i, j);
-                nodes[i][j].setWalkable(footprint[i][j]);
+                nodes[i][j].setWalkable(blueprint.isWalkable(i, j));
             }
         }
     }
@@ -140,11 +137,7 @@ public class NewPathfinder implements Pathfinder {
      */
     public final AbstractNode getNode(int x, int y) {
         // AbstractNodeODO check parameter.
-        return inRange(x, y) ? nodes[x][y] : null;
-    }
-
-    private boolean inRange(int x, int y) {
-        return x >= 0 && x < footprint.length && y >= 0 && y < footprint[x].length;
+        return blueprint.inRange(x, y) ? nodes[x][y] : null;
     }
 
 
@@ -223,7 +216,7 @@ public class NewPathfinder implements Pathfinder {
     private final List<AbstractNode> findPath(int oldX, int oldY, int newX, int newY) {
         // AbstractNodeODO check input
         openList = new LinkedHashSet<AbstractNode>();
-        closedList = new SmartTable(footprint.length, footprint[0].length);
+        closedList = new SmartTable(blueprint.getWidth(), blueprint.getHeight());
         openList.add(nodes[oldX][oldY]); // add starting node to open list
         if (oldX == newX && oldY == newY) {
             return new LinkedList<AbstractNode>();

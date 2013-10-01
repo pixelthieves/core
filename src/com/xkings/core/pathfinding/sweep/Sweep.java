@@ -30,7 +30,7 @@ public class Sweep {
     private void clean() {
         for (int i = 0; i < accessMap.getWidth(); i++) {
             for (int j = 0; j < accessMap.getHeight(); j++) {
-                accessMap.getData()[i][j] = false;
+                accessMap.setWalkable(false, i, j);
             }
         }
     }

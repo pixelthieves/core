@@ -30,7 +30,7 @@ public class Blueprint {
 
     public void setWalkable(boolean walkable, int x, int y) {
         if (!inRange(x, y)) {
-            throw new IllegalArgumentException("Position [" + x + ", " + y + "] is oout of bounds.");
+            throw new IllegalArgumentException("Position [" + x + ", " + y + "] is out of bounds.");
         }
         data[x][y] = walkable;
     }

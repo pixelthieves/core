@@ -42,9 +42,7 @@ import java.util.*;
  * Usage of this package: Create a node class which extends AbstractNode and implements the sethCosts method. Create a
  * NodeFactory that implements the NodeFactory interface. Create OldPathfinder instance with those created classes.
  *
- * @param <AbstractNode>
  * @version 1.0
- * @see ExampleUsage ExampleUsage
  * <p/>
  * @see com.xkings.core.pathfinding.astar.AbstractNode
  * @see com.xkings.core.pathfinding.astar.NodeFactory

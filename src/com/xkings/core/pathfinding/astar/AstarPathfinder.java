@@ -47,12 +47,12 @@ import java.util.*;
  * @see com.xkings.core.pathfinding.astar.AbstractNode
  * @see com.xkings.core.pathfinding.astar.NodeFactory
  */
-public class NewPathfinder implements Pathfinder {
+public class AstarPathfinder implements Pathfinder {
 
     /**
      * weather or not it is possible to walk diagonally on the map in general.
      */
-    protected static boolean CAN_MOVE_DIAGONALY = true;
+    protected static boolean CAN_MOVE_DIAGONALLY = true;
     /**
      * weather or not it is possible to walk diagonally through corners.
      */
@@ -61,16 +61,7 @@ public class NewPathfinder implements Pathfinder {
     /**
      * holds nodes. first dim represents x-axis, second y-axis.
      */
-    private final AbstractNode[][] nodes;
-
-    /**
-     * width + 1 is size of first dimension of nodes.
-     */
-    protected int width;
-    /**
-     * higth + 1 is size of second dimension of nodes.
-     */
-    protected int hight;
+    private AbstractNode[][] nodes;
 
     /**
      * a Factory to create instances of specified nodes.
@@ -78,7 +69,6 @@ public class NewPathfinder implements Pathfinder {
     private NodeFactory nodeFactory;
 
     private final Blueprint blueprint;
-    private long timestamp;
 
     /**
      * constructs a squared map with given width and hight.
@@ -87,10 +77,8 @@ public class NewPathfinder implements Pathfinder {
      *
      * @param blueprint
      */
-    public NewPathfinder(Blueprint blueprint) {
-        // AbstractNodeODO check parameters. width and higth should be > 0.
+    public AstarPathfinder(Blueprint blueprint) {
         this.blueprint = blueprint;
-        nodes = new AbstractNode[blueprint.getWidth()][blueprint.getHeight()];
     }
 
     public void setNode(NodeFactory nf) {
@@ -102,8 +90,9 @@ public class NewPathfinder implements Pathfinder {
      * initializes all nodes. AbstractNodeheir coordinates will be set correctly.
      */
     private void initEmptyNodes() {
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < hight; j++) {
+        nodes = new AbstractNode[blueprint.getWidth()][blueprint.getHeight()];
+        for (int i = 0; i < blueprint.getWidth(); i++) {
+            for (int j = 0; j < blueprint.getHeight(); j++) {
                 nodes[i][j] = nodeFactory.createNode(i, j);
                 nodes[i][j].setWalkable(blueprint.isWalkable(i, j));
             }
@@ -145,14 +134,14 @@ public class NewPathfinder implements Pathfinder {
      * a player will be represented as "o", an unwakable terrain as "#". Movement penalty will not be displayed.
      */
     public void drawMap() {
-        for (int i = 0; i <= width; i++) {
+        for (int i = 0; i <= blueprint.getWidth(); i++) {
             print(" _"); // boarder of map
         }
         print("\n");
 
-        for (int j = hight - 1; j >= 0; j--) {
+        for (int j = blueprint.getHeight() - 1; j >= 0; j--) {
             print("|"); // boarder of map
-            for (int i = 0; i < width; i++) {
+            for (int i = 0; i < blueprint.getWidth(); i++) {
                 if (nodes[i][j].isWalkable()) {
                     print("  ");
                 } else {
@@ -162,7 +151,7 @@ public class NewPathfinder implements Pathfinder {
             print("|\n"); // boarder of map
         }
 
-        for (int i = 0; i <= width; i++) {
+        for (int i = 0; i <= blueprint.getWidth(); i++) {
             print(" _"); // boarder of map
         }
     }
@@ -335,7 +324,7 @@ public class NewPathfinder implements Pathfinder {
             testNode(adj, westNode);
         }
 
-        if (x < width) {
+        if (x < blueprint.getWidth()) {
             testNode(adj, eastNode);
         }
 
@@ -343,19 +332,19 @@ public class NewPathfinder implements Pathfinder {
             testNode(adj, southNode);
         }
 
-        if (y < hight) {
+        if (y < blueprint.getHeight()) {
             testNode(adj, northNode);
         }
 
         // add nodes that are diagonaly adjacent too:
-        if (CAN_MOVE_DIAGONALY) {
+        if (CAN_MOVE_DIAGONALLY) {
 
             AbstractNode northEastNode = this.getNode(x + 1, y + 1);
             AbstractNode northWestNode = this.getNode(x - 1, y + 1);
             AbstractNode southEastNode = this.getNode(x + 1, y - 1);
             AbstractNode southWestNode = this.getNode(x - 1, y - 1);
 
-            if (x < width && y < hight) {
+            if (x < blueprint.getWidth() && y < blueprint.getHeight()) {
                 testNode = northEastNode;
                 if (testNode != null && testNode.isWalkable() &&
                         !closedList.contains(testNode)) {
@@ -377,7 +366,7 @@ public class NewPathfinder implements Pathfinder {
                 }
             }
 
-            if (x > 0 && y < hight) {
+            if (x > 0 && y < blueprint.getHeight()) {
                 testNode = northWestNode;
                 if (testNode != null && testNode.isWalkable() &&
                         !closedList.contains(testNode)) {
@@ -388,7 +377,7 @@ public class NewPathfinder implements Pathfinder {
                 }
             }
 
-            if (x < width && y > 0) {
+            if (x < blueprint.getWidth() && y > 0) {
                 testNode = southEastNode;
                 if (testNode != null && testNode.isWalkable() && !closedList.contains(testNode)) {
                     if (CAN_CUT_CORNERS || southNode.isWalkable() && eastNode.isWalkable()) {

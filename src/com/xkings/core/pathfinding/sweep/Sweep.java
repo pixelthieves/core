@@ -1,5 +1,6 @@
 package com.xkings.core.pathfinding.sweep;
 
+import com.badlogic.gdx.math.Vector2;
 import com.xkings.core.pathfinding.Blueprint;
 
 /**
@@ -82,4 +83,6 @@ public class Sweep {
     public String toString() {
         return accessMap.toString();
     }
+
+
 }

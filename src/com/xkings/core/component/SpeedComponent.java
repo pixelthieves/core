@@ -4,7 +4,6 @@ import com.artemis.Component;
 
 public class SpeedComponent extends Component {
 
-
     private final float speed;
 
     public SpeedComponent(float speed) {

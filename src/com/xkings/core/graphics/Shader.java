@@ -30,10 +30,10 @@ public class Shader {
 
         FileHandle[] list = dirHandle.list();
 
-        for (FileHandle f : list) {
+        for (FileHandle file : list) {
 
-            String ext = f.extension();
-            String name = f.nameWithoutExtension();
+            String ext = file.extension();
+            String name = file.nameWithoutExtension();
 
             ShaderStructure ss;
             if (!map.containsKey(name)) {
@@ -44,10 +44,10 @@ public class Shader {
 
             switch (ShaderType.valueOf(ext)) {
                 case vsh:
-                    ss.setVertex(f.readString());
+                    ss.setVertex(file.readString());
                     break;
                 case fsh:
-                    ss.setFragment(f.readString());
+                    ss.setFragment(file.readString());
                     break;
             }
 

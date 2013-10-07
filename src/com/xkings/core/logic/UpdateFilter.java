@@ -36,4 +36,8 @@ public class UpdateFilter implements Updateable {
     public void setActive(boolean active) {
         decoratedInstance.setActive(active);
     }
+
+    public float getRemainingTime() {
+        return timeFilter - timeAggregator;
+    }
 }

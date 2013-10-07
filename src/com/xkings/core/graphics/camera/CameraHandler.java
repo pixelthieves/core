@@ -1,6 +1,7 @@
 package com.xkings.core.graphics.camera;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Vector2;
 
 /**
  * Common interface for handling the camera.
@@ -31,5 +32,11 @@ public interface CameraHandler {
      * @return the wrapped camera.
      */
     public OrthographicCamera getCamera();
+
+    /**
+     * Scales input coordinated accordingly
+     * @return scaled vector
+     */
+    public Vector2 screenToWorld(float x, float y);
 
 }

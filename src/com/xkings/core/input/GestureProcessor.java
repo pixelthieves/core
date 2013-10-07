@@ -5,7 +5,7 @@ import com.xkings.core.graphics.camera.CameraHandler;
 
 public class GestureProcessor extends GestureDetector.GestureAdapter {
 
-    private final CameraHandler camera;
+    protected final CameraHandler camera;
 
     public GestureProcessor(CameraHandler camera) {
         this.camera = camera;

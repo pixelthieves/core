@@ -21,7 +21,6 @@ public class BoundedCameraHandler extends BoundlessCameraHandler {
         if (bounds == null) throw new IllegalArgumentException("Bounds can't be null");
         this.bounds = bounds;
         zoom(camera.zoom);
-        fixBounds();
     }
 
     private static float getMinimalZoom(OrthographicCamera camera, Rectangle bounds) {
@@ -29,20 +28,9 @@ public class BoundedCameraHandler extends BoundlessCameraHandler {
                 bounds.getHeight() / (camera.viewportHeight * camera.zoom));
     }
 
-    public void move(float x, float y) {
-        super.move(x, y);
-        fixBounds();
-    }
-
-    public void zoom(float zoom) {
-        //TODO Choosing a good delta value is crucial, current mechanism should be improved.
-        super.zoom(zoom * ZOOM_MAX);
-        fixBounds();
-    }
-
-    private void fixBounds() {
-        Vector2 halfViewport =
-                new Vector2(camera.viewportWidth * camera.zoom / 2f, camera.viewportHeight * camera.zoom / 2f);
+    @Override
+    protected void update() {
+        super.update();
         camera.position.x = MathUtils.clamp(camera.position.x, halfViewport.x, bounds.width - halfViewport.x);
         camera.position.y = MathUtils.clamp(camera.position.y, halfViewport.y, bounds.height - halfViewport.y);
     }

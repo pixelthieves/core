@@ -9,14 +9,19 @@ public class UpdateFilter implements Updateable {
     private float timeAggregator = 0;
 
     public UpdateFilter(Updateable decoratedInstance, float timeFilter) {
+        this(decoratedInstance, timeFilter, true);
+    }
+
+    public UpdateFilter(Updateable decoratedInstance, float timeFilter, boolean imminentStart) {
         this.decoratedInstance = decoratedInstance;
         this.timeFilter = timeFilter;
+        if (imminentStart) timeAggregator = timeFilter;
     }
 
     @Override
     public void update(float delta) {
         timeAggregator += delta;
-        while (timeAggregator <= timeFilter) {
+        while (timeAggregator >= timeFilter) {
             timeAggregator -= timeFilter;
             decoratedInstance.update(timeFilter);
         }

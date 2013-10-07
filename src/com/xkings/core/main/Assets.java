@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Skeletal implementation with useful methods for handling textures. Created by Tomas on 9/5/13.
  */
-public class AbstractAssets {
+public class Assets {
     private static HashMap<String, Array<TextureAtlas.AtlasRegion>> cachedTextures =
             new HashMap<String, Array<TextureAtlas.AtlasRegion>>();
     private static List<TextureAtlas> atlases = new ArrayList<TextureAtlas>();

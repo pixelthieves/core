@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class ConcreteEntity {
     private final List<Component> bag = new ArrayList<Component>();
     private final World world;
-    private Entity entity;
+    protected Entity entity;
 
     public ConcreteEntity(World world) {
         this.world = world;

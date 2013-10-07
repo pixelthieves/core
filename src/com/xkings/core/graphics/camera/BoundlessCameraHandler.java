@@ -8,21 +8,16 @@ import com.badlogic.gdx.math.MathUtils;
  */
 
 public class BoundlessCameraHandler implements CameraHandler {
-    private final float ZOOM_MAX;
-    private final float ZOOM_MIN;
+    public final float ZOOM_MAX;
+    public final float ZOOM_MIN;
     protected final OrthographicCamera camera;
 
-    public BoundlessCameraHandler(OrthographicCamera camera) {
-        this(camera, 2.5f);
-    }
-
-    public BoundlessCameraHandler(OrthographicCamera camera, float ZOOM_MAX) {
-        this(camera, ZOOM_MAX, 0.1f);
-    }
-
-    public BoundlessCameraHandler(OrthographicCamera camera, float ZOOM_MAX, float ZOOM_MIN) {
-        this.ZOOM_MAX = ZOOM_MAX;
-        this.ZOOM_MIN = ZOOM_MIN;
+    public BoundlessCameraHandler(OrthographicCamera camera, float zoomMax, float zoomMin) {
+        if (zoomMax < zoomMin) {
+            throw new IllegalArgumentException("ZoomMax has to be larger than zoomMin.");
+        }
+        this.ZOOM_MAX = zoomMax;
+        this.ZOOM_MIN = zoomMin;
         this.camera = camera;
     }
 
@@ -33,7 +28,7 @@ public class BoundlessCameraHandler implements CameraHandler {
 
     @Override
     public void zoom(float zoom) {
-        camera.zoom = MathUtils.clamp(zoom, ZOOM_MIN, ZOOM_MAX);
+        camera.zoom = MathUtils.clamp(camera.zoom + zoom, ZOOM_MIN, ZOOM_MAX);
     }
 
     @Override

@@ -12,12 +12,12 @@ import com.badlogic.gdx.math.Vector2;
 public class BoundedCameraHandler extends BoundlessCameraHandler {
     private final Rectangle bounds;
 
-    public BoundedCameraHandler(OrthographicCamera camera, int width, int height) {
-        this(camera, new Rectangle(0, 0, width, height));
+    public BoundedCameraHandler(OrthographicCamera camera, int width, int height, float zoomMax) {
+        this(camera, new Rectangle(0, 0, width, height), zoomMax);
     }
 
-    public BoundedCameraHandler(OrthographicCamera camera, Rectangle bounds) {
-        super(camera, getMinimalZoom(camera, bounds));
+    public BoundedCameraHandler(OrthographicCamera camera, Rectangle bounds, float zoomMax) {
+        super(camera, getMinimalZoom(camera, bounds), zoomMax);
         if (bounds == null) throw new IllegalArgumentException("Bounds can't be null");
         this.bounds = bounds;
         zoom(camera.zoom);
@@ -35,7 +35,8 @@ public class BoundedCameraHandler extends BoundlessCameraHandler {
     }
 
     public void zoom(float zoom) {
-        super.zoom(zoom);
+        //TODO Choosing a good delta value is crucial, current mechanism should be improved.
+        super.zoom(zoom * ZOOM_MAX);
         fixBounds();
     }
 

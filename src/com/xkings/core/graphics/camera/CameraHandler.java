@@ -20,9 +20,9 @@ public interface CameraHandler {
     /**
      * Zoom camera.
      *
-     * @param zoom the camera to given level.
+     * @param zoomDelta zooms the camera by some amount.
      */
-    void zoom(float zoom);
+    void zoom(float zoomDelta);
 
 
     /**

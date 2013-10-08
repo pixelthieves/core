@@ -38,6 +38,13 @@ public class GenericBlueprint<T> {
         data[x][y] = walkable;
     }
 
+    public T getWalkable(int x, int y) {
+        if (!inRange(x, y)) {
+            throw new IllegalArgumentException("Position [" + x + ", " + y + "] is out of bounds.");
+        }
+        return data[x][y];
+    }
+
     public int getWidth() {
         return data.length;
     }

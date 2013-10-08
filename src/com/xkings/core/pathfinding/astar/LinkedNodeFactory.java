@@ -17,15 +17,15 @@
 
 package com.xkings.core.pathfinding.astar;
 
-import com.xkings.core.pathfinding.Blueprint;
+import com.xkings.core.pathfinding.GenericBlueprint;
 
 /**
  * A Factory for LinkedNode.
  */
 public class LinkedNodeFactory implements NodeFactory {
-    private final Blueprint blueprint;
+    private final GenericBlueprint blueprint;
 
-    public LinkedNodeFactory(Blueprint blueprint) {
+    public LinkedNodeFactory(GenericBlueprint blueprint) {
         this.blueprint = blueprint;
     }
 

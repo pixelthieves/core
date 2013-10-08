@@ -27,7 +27,7 @@ package com.xkings.core.pathfinding.astar;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.xkings.core.pathfinding.Blueprint;
+import com.xkings.core.pathfinding.GenericBlueprint;
 
 import java.util.*;
 
@@ -68,7 +68,7 @@ public class AstarPathfinder implements Pathfinder {
      */
     private NodeFactory nodeFactory;
 
-    private final Blueprint blueprint;
+    private final GenericBlueprint blueprint;
 
     /**
      * constructs a squared map with given width and hight.
@@ -77,7 +77,7 @@ public class AstarPathfinder implements Pathfinder {
      *
      * @param blueprint
      */
-    public AstarPathfinder(Blueprint blueprint) {
+    public AstarPathfinder(GenericBlueprint blueprint) {
         this.blueprint = blueprint;
     }
 

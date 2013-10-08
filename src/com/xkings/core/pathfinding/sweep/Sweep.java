@@ -1,7 +1,6 @@
 package com.xkings.core.pathfinding.sweep;
 
-import com.badlogic.gdx.math.Vector2;
-import com.xkings.core.pathfinding.Blueprint;
+import com.xkings.core.pathfinding.GenericBlueprint;
 
 /**
  * Moves from specific block to all directions and checks if its still possible to access these blocks.
@@ -11,21 +10,21 @@ import com.xkings.core.pathfinding.Blueprint;
 public class Sweep {
 
     private final boolean canMoveDiagonally;
-    private Blueprint blueprint;
-    private Blueprint accessMap;
+    private GenericBlueprint blueprint;
+    private GenericBlueprint accessMap;
 
-    public Sweep(Blueprint blueprint) {
+    public Sweep(GenericBlueprint blueprint) {
         this(blueprint, true);
     }
 
-    public Sweep(Blueprint blueprint, boolean canMoveDiagonally) {
+    public Sweep(GenericBlueprint blueprint, boolean canMoveDiagonally) {
         setBlueprint(blueprint);
         this.canMoveDiagonally = canMoveDiagonally;
     }
 
-    public void setBlueprint(Blueprint blueprint) {
+    public void setBlueprint(GenericBlueprint blueprint) {
         this.blueprint = blueprint;
-        this.accessMap = new Blueprint(blueprint.getWidth(), blueprint.getHeight());
+        this.accessMap = new GenericBlueprint(blueprint.getWidth(), blueprint.getHeight());
     }
 
     private void clean() {

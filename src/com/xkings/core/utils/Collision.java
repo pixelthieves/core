@@ -1,6 +1,7 @@
 package com.xkings.core.utils;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 /**
  * User: Tomas <br> Date: 7/21/13 <br> Time: 7:49 PM <br>
@@ -57,5 +58,15 @@ public class Collision {
         }
 
         return result;
+    }
+
+    public static boolean intersectRects(float ax, float ay, float aw, float ah, float bx, float by, float bw,
+                                         float bh) {
+        return !(ax > bx + bw || ax + aw < bx || ay > by + bh || ay + ah < by);
+    }
+
+    public static boolean intersectRects(Vector3 position, Vector3 position1, Vector3 size, Vector3 size1) {
+        return intersectRects(position.x - size.x / 2f, position.y - size.y / 2f, size.x, size.y,
+                position1.x - size1.x / 2f, position1.y - size1.y / 2f, size1.x, size1.y);
     }
 }

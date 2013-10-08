@@ -3,15 +3,15 @@ package com.xkings.core.component;
 /**
  * Created by Tomas on 9/8/13.
  */
-public class TimeHolder {
+public class Time {
 
     private float availableTime;
 
-    public TimeHolder() {
+    public Time() {
         this(0);
     }
 
-    public TimeHolder(float availableTime) {
+    public Time(float availableTime) {
         this.availableTime = availableTime;
     }
 

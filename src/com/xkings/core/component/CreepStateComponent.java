@@ -7,13 +7,13 @@ import com.artemis.Component;
  */
 public class CreepStateComponent extends Component {
 
-    private TimeHolder timeHolder = new TimeHolder();
+    private Time time = new Time();
 
     private CreepState state = CreepState.IDLE;
 
 
-    public TimeHolder getTimeHolder() {
-        return timeHolder;
+    public Time getTime() {
+        return time;
     }
 
     public CreepState getState() {

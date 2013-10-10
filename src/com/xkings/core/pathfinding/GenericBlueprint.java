@@ -57,8 +57,8 @@ public class GenericBlueprint<T> {
         return new Rectangle(0, 0, data.length, data[0].length);
     }
 
-    public String print() {
-        return print(bounds);
+    public void print() {
+        System.out.println(print(bounds));
     }
 
     public String print(Rectangle segment) {
@@ -75,7 +75,7 @@ public class GenericBlueprint<T> {
 
     @Override
     public String toString() {
-        return print();
+        return print(bounds);
     }
 }
 

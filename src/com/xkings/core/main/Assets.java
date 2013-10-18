@@ -1,6 +1,7 @@
 package com.xkings.core.main;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 
@@ -100,4 +101,7 @@ public class Assets {
         return new ObjectInputStream(Gdx.files.internal(fileName).read()).readObject();
     }
 
+    public static BitmapFont createFont(String name) {
+        return new BitmapFont(Gdx.files.internal("data/fonts/" + name + ".fnt"), getTexture(name), false);
+    }
 }

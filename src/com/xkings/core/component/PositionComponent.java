@@ -24,7 +24,6 @@ public class PositionComponent extends Component {
     }
 
     public void setPoint(Vector3 point) {
-
         this.point = point;
     }
 }

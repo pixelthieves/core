@@ -1,3 +1,6 @@
 [submodule "artemis"]
 	path = artemis
 	url = https://github.com/xkings/artemis
+[submodule "artemisES"]
+	path = artemisES
+	url = https://github.com/xkings/artemisES

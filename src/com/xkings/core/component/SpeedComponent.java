@@ -4,13 +4,21 @@ import com.artemis.Component;
 
 public class SpeedComponent extends Component {
 
-    private final float speed;
+    private float speed;
 
     public SpeedComponent(float speed) {
         this.speed = speed;
     }
 
     public float getSpeed() {
-        return speed;
+        return this.speed;
+    }
+
+    public void scaleSpeed(float scale) {
+        this.speed *= scale;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
 }

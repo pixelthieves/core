@@ -11,6 +11,20 @@ public class Blueprint {
     private final boolean[][] data;
     private final Rectangle bounds;
 
+    public Blueprint(int width, int height, boolean walkable) {
+        this(getInitializedBlueprint(width, height, walkable));
+    }
+
+    private static boolean[][] getInitializedBlueprint(int width, int height, boolean walkable) {
+        boolean[][] blueprint = new boolean[width][height];
+        for (int i = 0; i < blueprint.length; i++) {
+            for (int j = 0; j < blueprint[i].length; j++) {
+                blueprint[i][j] = walkable;
+            }
+        }
+        return blueprint;
+    }
+
     public Blueprint(int width, int height) {
         this(new boolean[width][height]);
     }

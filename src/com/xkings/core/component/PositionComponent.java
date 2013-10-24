@@ -3,7 +3,7 @@ package com.xkings.core.component;
 import com.artemis.Component;
 import com.badlogic.gdx.math.Vector3;
 
-public class PositionComponent extends Component {
+public class PositionComponent extends Component implements Comparable<PositionComponent> {
 
     private Vector3 point;
 
@@ -25,5 +25,16 @@ public class PositionComponent extends Component {
 
     public void setPoint(Vector3 point) {
         this.point = point;
+    }
+
+    @Override
+    public int compareTo(PositionComponent o) {
+        if (this.point.y > o.point.y) {
+            return -1;
+        } else if (this.point.y < o.point.y) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

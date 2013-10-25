@@ -1,6 +1,7 @@
 package com.xkings.core.component;
 
 import com.artemis.Component;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector3;
 
 public class PositionComponent extends Component implements Comparable<PositionComponent> {
@@ -20,6 +21,7 @@ public class PositionComponent extends Component implements Comparable<PositionC
     }
 
     public Vector3 getPoint() {
+        Gdx.graphics.getDensity();
         return point;
     }
 

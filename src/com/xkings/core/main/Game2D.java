@@ -14,10 +14,12 @@ public abstract class Game2D implements ApplicationListener {
     private OrthographicCamera camera;
     private boolean initialize = true;
     public static Param DEBUG;
+    public static Param STRESS_TEST;
 
     protected Game2D(String... args) {
         params = new ParamHolder(args);
         DEBUG = params.getParam("-debug", "-d");
+        STRESS_TEST = params.getParam("-stresstest", "-st");
     }
 
     @Override

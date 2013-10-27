@@ -21,7 +21,6 @@ public class PositionComponent extends Component implements Comparable<PositionC
     }
 
     public Vector3 getPoint() {
-        Gdx.graphics.getDensity();
         return point;
     }
 

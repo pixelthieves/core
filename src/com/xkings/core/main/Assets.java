@@ -1,6 +1,7 @@
 package com.xkings.core.main;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
@@ -78,6 +79,10 @@ public class Assets {
             throw new IllegalArgumentException("Texture [" + name + "] is not available.");
         }
 
+    }
+
+    public static Music getMusic(final String name){
+        return Gdx.audio.newMusic(Gdx.files.internal("data/sound/" + name));
     }
 
     /**

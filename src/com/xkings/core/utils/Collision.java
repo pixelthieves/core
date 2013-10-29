@@ -24,16 +24,17 @@ public class Collision {
     /**
      * Return true if the given point is contained inside the boundary. See: http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
      *
-     * @param point The point to check
+     * @param x coordinate of intersection
+     * @param y coordinate of intersection
      * @return true if the point is inside the boundary, false otherwise
      */
-    public static boolean pointInsidePolygon(Vector2[] polygon, Vector2 point) {
+    public static boolean pointInsidePolygon(Vector2[] polygon, float x, float y) {
         int i;
         int j;
         boolean result = false;
         for (i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-            if ((polygon[i].y > point.y) != (polygon[j].y > point.y) && (point.x <
-                    (polygon[j].x - polygon[i].x) * (point.y - polygon[i].y) / (polygon[j].y - polygon[i].y) +
+            if ((polygon[i].y > y) != (polygon[j].y > y) && (x <
+                    (polygon[j].x - polygon[i].x) * (y - polygon[i].y) / (polygon[j].y - polygon[i].y) +
                             polygon[i].x)) {
                 result = !result;
             }

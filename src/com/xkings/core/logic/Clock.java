@@ -1,5 +1,7 @@
 package com.xkings.core.logic;
 
+import com.badlogic.gdx.math.MathUtils;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,14 +11,16 @@ import java.util.List;
  */
 public class Clock implements Runnable {
 
-    private double speedMultiplier = 1f;
+    private static final float MAX_MULTIPLIER = 32;
+    private static final float MIN_MULTIPLIER = 1 / MAX_MULTIPLIER;
+    private float speedMultiplier = 1f;
     private final String name;
     private final boolean sleep;
     private boolean quit = false;
     private final List<Updateable> services = new LinkedList<Updateable>();
     private static final long BILLION = 1000000000;
-    private static final float delta = .0166f;
-    private static final float maxStep = .25f;
+    private static final float originalDelta = .0166f;
+    private static final double maxStep = originalDelta * MAX_MULTIPLIER;
     private final boolean manualExecution;
     private long currentTime = System.nanoTime();
     private float accumulator = 0.0f;
@@ -65,9 +69,9 @@ public class Clock implements Runnable {
         currentTime = newTime;
 
         frameTime = Math.min(frameTime, maxStep); // note: max frame time to avoid spiral of death
-
+        System.out.println(frameTime);
         accumulator += frameTime;
-
+        float delta = speedMultiplier <= 1 ? originalDelta / (1 / speedMultiplier) : originalDelta;
         if (accumulator < delta) {
             if (sleep) {
                 try {
@@ -134,7 +138,11 @@ public class Clock implements Runnable {
      *
      * @param speedMultiplier If multiplier is greater then 1, game will run faster, slower if multiplier is smaller.
      */
-    public void setSpeedMultiplier(double speedMultiplier) {
-        this.speedMultiplier = speedMultiplier;
+    public void setSpeedMultiplier(float speedMultiplier) {
+        this.speedMultiplier = MathUtils.clamp(speedMultiplier, MIN_MULTIPLIER, MAX_MULTIPLIER);
+    }
+
+    public float getSpeedMultiplier() {
+        return speedMultiplier;
     }
 }

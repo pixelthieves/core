@@ -70,4 +70,8 @@ public class Collision {
         return intersectRects(position.x - size.x / 2f, position.y - size.y / 2f, size.x, size.y,
                 position1.x - size1.x / 2f, position1.y - size1.y / 2f, size1.x, size1.y);
     }
+
+    public static boolean intersectRects(Vector3 position, Vector3 size, float bx, float by, float bw, float bh) {
+        return intersectRects(position.x - size.x / 2f, position.y - size.y / 2f, size.x, size.y, bx, by, bw, bh);
+    }
 }

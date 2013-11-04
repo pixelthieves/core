@@ -66,12 +66,20 @@ public class Collision {
         return !(ax > bx + bw || ax + aw < bx || ay > by + bh || ay + ah < by);
     }
 
+    public static boolean intersectpointInRect(float px, float py, float ax, float ay, float aw, float ah) {
+        return !(px > ax + aw || px < ax || py > ay + ah || py < ay);
+    }
+
     public static boolean intersectRects(Vector3 position, Vector3 position1, Vector3 size, Vector3 size1) {
         return intersectRects(position.x - size.x / 2f, position.y - size.y / 2f, size.x, size.y,
                 position1.x - size1.x / 2f, position1.y - size1.y / 2f, size1.x, size1.y);
     }
 
-    public static boolean intersectRects(Vector3 position, Vector3 size, float bx, float by, float bw, float bh) {
-        return intersectRects(position.x - size.x / 2f, position.y - size.y / 2f, size.x, size.y, bx, by, bw, bh);
+    public static boolean intersectpointInRect(Vector3 point, Vector3 position, Vector3 size) {
+        return intersectpointInRect(point, position, size.x, size.y);
+    }
+
+    public static boolean intersectpointInRect(Vector3 point, Vector3 position, float sizeX, float sizeY) {
+        return intersectpointInRect(point.x, point.y, position.x - sizeX / 2f, position.y - sizeY / 2f, sizeX, sizeY);
     }
 }

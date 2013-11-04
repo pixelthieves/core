@@ -49,7 +49,7 @@ public class BoundlessCameraHandler implements CameraHandler {
                 camera.position.y + y * camera.zoom - halfViewport.y);
     }
 
-    protected void update() {
+    public void update() {
         halfViewport.set(camera.viewportWidth * camera.zoom / 2f, camera.viewportHeight * camera.zoom / 2f);
     }
 }

@@ -3,7 +3,6 @@ package com.xkings.core.graphics.camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 
 /**
  * Camera can be only operated inside of bounds. If camera is brought outside of the bounds, it's position is adjusted
@@ -29,7 +28,7 @@ public class BoundedCameraHandler extends BoundlessCameraHandler {
     }
 
     @Override
-    protected void update() {
+    public void update() {
         super.update();
         camera.position.x = MathUtils.clamp(camera.position.x, halfViewport.x, bounds.width - halfViewport.x);
         camera.position.y = MathUtils.clamp(camera.position.y, halfViewport.y, bounds.height - halfViewport.y);

@@ -39,4 +39,7 @@ public interface CameraHandler {
      */
     public Vector2 screenToWorld(float x, float y);
 
+    /** Updates viewport sizes and/or camera position. */
+    public void update();
+
 }

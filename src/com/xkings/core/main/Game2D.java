@@ -37,7 +37,9 @@ public abstract class Game2D implements ApplicationListener {
 
     @Override
     public void resize(int width, int height) {
-        camera = new OrthographicCamera(width, height);
+        if (camera == null) {
+            camera = new OrthographicCamera(width, height);
+        }
         camera.position.set(width / 2, height / 2, 0);
         if (initialize) {
             init(camera);

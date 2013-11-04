@@ -68,10 +68,10 @@ public class Clock implements Runnable {
         double frameTime = (double) (newTime - currentTime) * speedMultiplier / BILLION;
         currentTime = newTime;
 
+        float delta = originalDelta * speedMultiplier;
         frameTime = Math.min(frameTime, maxStep); // note: max frame time to avoid spiral of death
-        System.out.println(frameTime);
+
         accumulator += frameTime;
-        float delta = speedMultiplier <= 1 ? originalDelta / (1 / speedMultiplier) : originalDelta;
         if (accumulator < delta) {
             if (sleep) {
                 try {

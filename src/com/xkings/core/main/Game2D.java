@@ -19,7 +19,7 @@ public abstract class Game2D implements ApplicationListener {
     protected Game2D(String... args) {
         params = new ParamHolder(args);
         DEBUG = params.getParam("-debug", "-d");
-        STRESS_TEST = params.getParam("-stresstest", "-st");
+        STRESS_TEST = params.getParam("-stress", "-stresstest", "-st");
     }
 
     @Override

@@ -5,25 +5,25 @@ package com.xkings.core.logic;
  */
 public class UpdateFilter implements Updateable {
     private final Updateable decoratedInstance;
-    private final float timeFilter;
+    private float interval;
     private float timeAggregator = 0;
 
-    public UpdateFilter(Updateable decoratedInstance, float timeFilter) {
-        this(decoratedInstance, timeFilter, true);
+    public UpdateFilter(Updateable decoratedInstance, float interval) {
+        this(decoratedInstance, interval, true);
     }
 
-    public UpdateFilter(Updateable decoratedInstance, float timeFilter, boolean imminentStart) {
+    public UpdateFilter(Updateable decoratedInstance, float interval, boolean imminentStart) {
         this.decoratedInstance = decoratedInstance;
-        this.timeFilter = timeFilter;
-        if (imminentStart) timeAggregator = timeFilter;
+        this.interval = interval;
+        if (imminentStart) triggerUpdate();
     }
 
     @Override
     public void update(float delta) {
         timeAggregator += delta;
-        while (timeAggregator >= timeFilter) {
-            timeAggregator -= timeFilter;
-            decoratedInstance.update(timeFilter);
+        while (timeAggregator >= interval) {
+            timeAggregator -= interval;
+            decoratedInstance.update(interval);
         }
     }
 
@@ -38,6 +38,14 @@ public class UpdateFilter implements Updateable {
     }
 
     public float getRemainingTime() {
-        return timeFilter - timeAggregator;
+        return interval - timeAggregator;
+    }
+
+    public void setInterval(float interval) {
+        this.interval = interval;
+    }
+
+    public void triggerUpdate() {
+        timeAggregator = interval;
     }
 }

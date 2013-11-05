@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Clock implements Runnable {
 
-    private static final float MAX_MULTIPLIER = 32;
+    private static final float MAX_MULTIPLIER = 16;
     private static final float MIN_MULTIPLIER = 1 / MAX_MULTIPLIER;
     private float speedMultiplier = 1f;
     private final String name;

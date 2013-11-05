@@ -11,8 +11,8 @@ public class Blueprint {
     private final boolean[][] data;
     private final Rectangle bounds;
 
-    public Blueprint(int width, int height, boolean walkable) {
-        this(getInitializedBlueprint(width, height, walkable));
+    public Blueprint(int x, int y, int width, int height, boolean walkable) {
+        this(x, y, getInitializedBlueprint(width, height, walkable));
     }
 
     private static boolean[][] getInitializedBlueprint(int width, int height, boolean walkable) {
@@ -26,25 +26,25 @@ public class Blueprint {
     }
 
     public Blueprint(int width, int height) {
-        this(new boolean[width][height]);
+        this(0, 0, new boolean[width][height]);
     }
 
-    public Blueprint(boolean[][] data) {
+    public Blueprint(int x, int y, boolean[][] data) {
         this.data = data;
-        bounds = new Rectangle(0, 0, data.length, data[0].length);
+        bounds = new Rectangle(x, y, data.length, data[0].length);
     }
 
     public boolean inRange(int x, int y) {
-        return x >= 0 && x < this.getWidth() && y >= 0 && y < this.getHeight();
+        return x >= bounds.x && x < bounds.x + bounds.width && y >= bounds.y && y < bounds.y + bounds.height;
     }
 
     public boolean isWalkable(int x, int y) {
-        return inRange(x, y) && data[x][y];
+        return inRange(x, y) && data[((int) (x - bounds.x))][((int) (y - bounds.y))];
     }
 
     public void setWalkable(boolean walkable, int x, int y) {
         if (!inRange(x, y)) {
-            throw new IllegalArgumentException("Position [" + x + ", " + y + "] is out of bounds.");
+            throw new IllegalArgumentException("Position [" + x + ", " + y + "] is out of bounds."+data.length+" "+data[0].length);
         }
         data[x][y] = walkable;
     }
@@ -80,7 +80,7 @@ public class Blueprint {
     public static Blueprint createInstanceClone(boolean[][] originalData) {
         boolean[][] data = new boolean[originalData.length][originalData[0].length];
         ArrayUtils.copyArray(originalData, data);
-        return new Blueprint(data);
+        return new Blueprint(0, 0, data);
     }
 
     @Override

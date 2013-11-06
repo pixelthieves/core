@@ -100,9 +100,7 @@ public class Shader {
 
         public void setFragment(String fragment) {
             this.fragment = fragment;
-
             compile();
-
         }
 
         private void compile() {

@@ -108,7 +108,7 @@ public class Shader {
                 System.out.println("Compiling shader [" + name + "]");
                 program = new ShaderProgram(vertex, fragment);
                 if (!program.isCompiled()) {
-                    throw new ShaderException(name, program);
+                    throw ShaderException.getInstance(name, program);
                 }
             }
         }

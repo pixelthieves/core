@@ -43,7 +43,7 @@ import java.util.*;
  * NodeFactory that implements the NodeFactory interface. Create OldPathfinder instance with those created classes.
  *
  * @version 1.0
- * <p/>
+ *          <p/>
  * @see com.pixelthieves.core.pathfinding.astar.AbstractNode
  * @see com.pixelthieves.core.pathfinding.astar.NodeFactory
  */

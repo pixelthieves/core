@@ -35,11 +35,14 @@ public interface CameraHandler {
 
     /**
      * Scales input coordinated accordingly
+     *
      * @return scaled vector
      */
     public Vector2 screenToWorld(float x, float y);
 
-    /** Updates viewport sizes and/or camera position. */
+    /**
+     * Updates viewport sizes and/or camera position.
+     */
     public void update();
 
 }

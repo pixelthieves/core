@@ -10,7 +10,8 @@ import static com.badlogic.gdx.Gdx.graphics;
 import static com.badlogic.gdx.graphics.Pixmap.Format.RGB565;
 
 /**
- * Renderer wrapper that writes to larger buffer and them scales it down. User: Tomas <br> Date: 7/19/13 <br> Time: 3:57
+ * Renderer wrapper that writes to larger buffer and them scales it down. User: Tomas <br> Date: 7/19/13 <br> Time:
+ * 3:57
  * AM <br>
  */
 public class SuperSampledRenderer implements Renderable {

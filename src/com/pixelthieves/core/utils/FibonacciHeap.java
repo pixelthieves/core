@@ -370,7 +370,8 @@ public final class FibonacciHeap<T> {
      *
      * @param entry       The element whose priority should be decreased.
      * @param newPriority The new priority to associate with this entry.
-     * @throws IllegalArgumentException If the new priority exceeds the old priority, or if the argument is not a finite
+     * @throws IllegalArgumentException If the new priority exceeds the old priority, or if the argument is not a
+     *                                  finite
      *                                  double.
      */
     public void decreaseKey(Entry<T> entry, double newPriority) {

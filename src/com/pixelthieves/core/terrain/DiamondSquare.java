@@ -8,7 +8,7 @@ import java.util.Random;
 public class DiamondSquare extends AbstractNoiseGenerator {
 
     public DiamondSquare(Random rand, float roughness, int width, int height) {
-        super(rand, roughness,width,  height);
+        super(rand, roughness, width, height);
     }
 
     @Override

@@ -49,7 +49,7 @@ public class UpdateFilter implements Updateable {
         timeAggregator = interval;
     }
 
-    public void reset(){
+    public void reset() {
         timeAggregator = 0;
     }
 }

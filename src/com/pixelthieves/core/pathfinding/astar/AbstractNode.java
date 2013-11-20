@@ -22,7 +22,8 @@ package com.pixelthieves.core.pathfinding.astar;
  * the A* algorithm.
  * <p/>
  * <p/>
- * An <code>AbstractNode</code> has x- and y-coordinates and can be walkable or not. A previous AbstractNode may be set,
+ * An <code>AbstractNode</code> has x- and y-coordinates and can be walkable or not. A previous AbstractNode may be
+ * set,
  * as well as the <code>fCosts</code>, <code>gCosts</code> and <code>hCosts</code>.
  * <p/>
  * <p/>
@@ -101,7 +102,8 @@ public abstract class AbstractNode {
     }
 
     /**
-     * returns weather or not the move from the <code>previousAbstractNode</code> was diagonally. If it is not diagonal,
+     * returns weather or not the move from the <code>previousAbstractNode</code> was diagonally. If it is not
+     * diagonal,
      * it is sideways.
      *
      * @return
@@ -111,7 +113,8 @@ public abstract class AbstractNode {
     }
 
     /**
-     * sets weather or not the move from the <code>previousAbstractNode</code> was diagonally. If it is not diagonal, it
+     * sets weather or not the move from the <code>previousAbstractNode</code> was diagonally. If it is not diagonal,
+     * it
      * is sideways.
      *
      * @param isDiagonaly
@@ -227,7 +230,8 @@ public abstract class AbstractNode {
      * sets gCosts to <code>gCosts</code> plus <code>movementPanelty</code> for this AbstractNode given the previous
      * AbstractNode.
      * <p/>
-     * It will assume <code>BASICMOVEMENTCOST</code> as the cost from <code>previousAbstractNode</code> to itself if the
+     * It will assume <code>BASICMOVEMENTCOST</code> as the cost from <code>previousAbstractNode</code> to itself if
+     * the
      * movement is not diagonally, otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
      * diagonally is set in the OldPathfinder class method which finds the adjacent AbstractNodes.
      *
@@ -244,7 +248,8 @@ public abstract class AbstractNode {
     /**
      * calculates - but does not set - g costs.
      * <p/>
-     * It will assume <code>BASICMOVEMENTCOST</code> as the cost from <code>previousAbstractNode</code> to itself if the
+     * It will assume <code>BASICMOVEMENTCOST</code> as the cost from <code>previousAbstractNode</code> to itself if
+     * the
      * movement is not diagonally, otherwise it will assume <code>DIAGONALMOVEMENTCOST</code>. Weather or not it is
      * diagonally is set in the OldPathfinder class method which finds the adjacent AbstractNodes.
      *

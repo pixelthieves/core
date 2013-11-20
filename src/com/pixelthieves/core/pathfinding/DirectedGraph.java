@@ -33,7 +33,8 @@ public final class DirectedGraph<T> implements Iterable<T> {
     }
 
     /**
-     * Given a start node, destination, and length, adds an arc from the start node to the destination of the length. If
+     * Given a start node, destination, and length, adds an arc from the start node to the destination of the length.
+     * If
      * an arc already existed, the length is updated to the specified value. If either endpoint does not exist in the
      * graph, throws a NoSuchElementException.
      *

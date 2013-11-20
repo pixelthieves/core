@@ -9,7 +9,7 @@ public class UpdateFilter implements Updateable {
     private float timeAggregator = 0;
 
     public UpdateFilter(Updateable decoratedInstance, float interval) {
-        this(decoratedInstance, interval, true);
+        this(decoratedInstance, interval, false);
     }
 
     public UpdateFilter(Updateable decoratedInstance, float interval, boolean imminentStart) {
@@ -47,5 +47,9 @@ public class UpdateFilter implements Updateable {
 
     public void triggerUpdate() {
         timeAggregator = interval;
+    }
+
+    public void reset(){
+        timeAggregator = 0;
     }
 }

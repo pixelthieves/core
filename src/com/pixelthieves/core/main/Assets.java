@@ -2,6 +2,7 @@ package com.pixelthieves.core.main;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
@@ -17,6 +18,7 @@ import java.util.List;
 public class Assets {
     private static HashMap<String, Array<TextureAtlas.AtlasRegion>> cachedTextures =
             new HashMap<String, Array<TextureAtlas.AtlasRegion>>();
+    private static HashMap<String, Sound> cachedSounds = new HashMap<String, Sound>();
     private static List<TextureAtlas> atlases = new ArrayList<TextureAtlas>();
     private static TextureAtlas current = null;
     private static int position = 1;
@@ -81,7 +83,16 @@ public class Assets {
 
     }
 
-    public static Music getMusic(final String name){
+    public static Sound getSound(final String name) {
+        Sound sound = cachedSounds.get(name);
+        if (sound == null) {
+            sound = Gdx.audio.newSound(Gdx.files.internal("data/sound/" + name + ".wav"));
+            cachedSounds.put(name, sound);
+        }
+        return sound;
+    }
+
+    public static Music getMusic(final String name) {
         return Gdx.audio.newMusic(Gdx.files.internal("data/sound/" + name));
     }
 

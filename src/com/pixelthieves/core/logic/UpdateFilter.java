@@ -46,7 +46,7 @@ public class UpdateFilter implements Updateable {
     }
 
     public void triggerUpdate() {
-        timeAggregator = interval;
+        update(getRemainingTime());
     }
 
     public void reset() {

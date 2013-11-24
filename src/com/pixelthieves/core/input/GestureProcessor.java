@@ -6,6 +6,7 @@ import com.pixelthieves.core.graphics.camera.CameraHandler;
 public class GestureProcessor extends GestureDetector.GestureAdapter {
 
     protected final CameraHandler camera;
+    private float initialDistance = 0;
 
     public GestureProcessor(CameraHandler camera) {
         this.camera = camera;
@@ -19,9 +20,18 @@ public class GestureProcessor extends GestureDetector.GestureAdapter {
 
     @Override
     public boolean zoom(float initialDistance, float distance) {
-        camera.zoom((distance - initialDistance) /
-                Math.max(camera.getCamera().viewportWidth, camera.getCamera().viewportHeight));
+        if (this.initialDistance != Float.MIN_VALUE) {
+            initialDistance = this.initialDistance;
+        }
+            camera.zoom((distance - initialDistance) /
+                    (Math.max(camera.getCamera().viewportWidth, camera.getCamera().viewportHeight)));
+            this.initialDistance = distance;
         return true;
     }
 
+    @Override
+    public boolean touchDown(float x, float y, int pointer, int button) {
+        initialDistance = Float.MIN_VALUE;
+        return super.touchDown(x, y, pointer, button);
+    }
 }

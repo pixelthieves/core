@@ -24,6 +24,7 @@ public abstract class Game2D implements ApplicationListener {
 
     @Override
     public void create() {
+        System.out.println("[CREATE]");
     }
 
 

@@ -24,7 +24,7 @@ public abstract class Game2D implements ApplicationListener {
 
     @Override
     public void create() {
-        System.out.println("[CREATE]");
+        System.err.println("[CREATE]");
     }
 
 
@@ -54,9 +54,16 @@ public abstract class Game2D implements ApplicationListener {
 
     @Override
     public void pause() {
+        System.err.println("[PAUSE]");
     }
 
     @Override
     public void resume() {
+        System.err.println("[RESUME]");
+    }
+
+    @Override
+    public void dispose() {
+        System.err.println("[DISPOSE]");
     }
 }

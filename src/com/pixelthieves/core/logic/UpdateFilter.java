@@ -52,4 +52,9 @@ public class UpdateFilter implements Updateable {
     public void reset() {
         timeAggregator = 0;
     }
+
+    public void reset(float interval) {
+        setInterval(interval);
+        reset();
+    }
 }

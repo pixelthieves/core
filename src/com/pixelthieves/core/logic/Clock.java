@@ -85,7 +85,8 @@ public class Clock implements Runnable {
             }
         } else {
             while (accumulator >= delta) {
-                for (Updateable service : services) {
+                for (int i = 0; i < services.size(); i++) {
+                    Updateable service = services.get(i);
                     if (service.isActive()) {
                         service.update(delta);
                     }

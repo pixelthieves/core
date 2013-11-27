@@ -6,7 +6,7 @@ import com.artemis.World;
  * Created by Tomas on 9/6/13.
  */
 public class WorldUpdater implements Updateable {
-    private final World world;
+    private World world;
 
     public WorldUpdater(World world) {
         this.world = world;
@@ -26,5 +26,9 @@ public class WorldUpdater implements Updateable {
     @Override
     public void setActive(boolean active) {
 
+    }
+
+    public void setWorld(World world) {
+        this.world = world;
     }
 }

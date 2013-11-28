@@ -7,7 +7,7 @@ import com.artemis.Component;
  */
 public class DamageComponent extends Component {
     private float damage;
-    private final float dps;
+    private final float speed;
 
     public DamageComponent(float damage) {
         this(damage, 1);
@@ -15,7 +15,7 @@ public class DamageComponent extends Component {
 
     public DamageComponent(float damage, float speed) {
         this.damage = damage;
-        this.dps = damage / speed;
+        this.speed =  speed;
     }
 
     public float getDamage() {
@@ -27,6 +27,6 @@ public class DamageComponent extends Component {
     }
 
     public float getDps() {
-        return dps;
+        return damage / speed;
     }
 }

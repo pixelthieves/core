@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
+import java.io.File;
 import java.util.HashMap;
 
 /**
@@ -15,47 +16,54 @@ public class Shader {
     private final HashMap<String, ShaderStructure> map = new HashMap<String, ShaderStructure>();
 
     private Shader() {
+        FileHandle[] list = getFiles();
+        for (FileHandle file : list) {
+            processFile(file);
+        }
+    }
+
+    private void processFile(FileHandle file) {
+        String ext = file.extension();
+        String name = file.nameWithoutExtension();
+
+        ShaderStructure ss;
+        if (!map.containsKey(name)) {
+            ss = new ShaderStructure(name);
+        } else {
+            ss = map.get(name);
+        }
+
+        switch (ShaderType.valueOf(ext)) {
+            case vsh:
+                ss.setVertex(file.readString());
+                break;
+            case fsh:
+                ss.setFragment(file.readString());
+                break;
+        }
+
+        if (!map.containsKey(name)) {
+            map.put(name, ss);
+        }
+    }
+
+    private FileHandle[] getFiles() {
+        FileHandle[] files = null;
         FileHandle dirHandle;
 
         // Eclipse side-effect of linking assets, assets are copied in bin folder
         if (Gdx.app.getType() == ApplicationType.Android) {
-            dirHandle = Gdx.files.internal("data/shaders");
+            files = Gdx.files.internal("data/shaders").list();
         } else {
             // ApplicationType.Desktop ..
             dirHandle = Gdx.files.internal("./bin/data/shaders");
             if (!dirHandle.exists()) {
-                dirHandle = Gdx.files.internal("data/shaders");
+                files = Gdx.files.internal("data/shaders").list();
+            }else{
+                files = dirHandle.list();
             }
         }
-
-        FileHandle[] list = dirHandle.list();
-
-        for (FileHandle file : list) {
-
-            String ext = file.extension();
-            String name = file.nameWithoutExtension();
-
-            ShaderStructure ss;
-            if (!map.containsKey(name)) {
-                ss = new ShaderStructure(name);
-            } else {
-                ss = map.get(name);
-            }
-
-            switch (ShaderType.valueOf(ext)) {
-                case vsh:
-                    ss.setVertex(file.readString());
-                    break;
-                case fsh:
-                    ss.setFragment(file.readString());
-                    break;
-            }
-
-            if (!map.containsKey(name)) {
-                map.put(name, ss);
-            }
-
-        }
+        return files;
     }
 
     /**
@@ -74,7 +82,12 @@ public class Shader {
     private ShaderStructure getStructure(String name) {
         ShaderStructure value = map.get(name);
         if (value == null) {
-            throw new IllegalArgumentException("Specified Shader does not exists: " + name);
+            processFile(Gdx.files.internal("data/shaders/" + name + ".vsh"));
+            processFile(Gdx.files.internal("data/shaders/" + name + ".fsh"));
+            value = map.get(name);
+            if (value == null) {
+                throw new IllegalArgumentException("Specified Shader does not exists: " + name);
+            }
         }
         return value;
     }

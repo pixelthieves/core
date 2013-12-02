@@ -23,9 +23,9 @@ public class GestureProcessor extends GestureDetector.GestureAdapter {
         if (this.initialDistance != Float.MIN_VALUE) {
             initialDistance = this.initialDistance;
         }
-            camera.zoom((distance - initialDistance) /
-                    (Math.max(camera.getCamera().viewportWidth, camera.getCamera().viewportHeight)));
-            this.initialDistance = distance;
+        camera.zoom((distance - initialDistance) /
+                (Math.max(camera.getCamera().viewportWidth, camera.getCamera().viewportHeight)));
+        this.initialDistance = distance;
         return true;
     }
 

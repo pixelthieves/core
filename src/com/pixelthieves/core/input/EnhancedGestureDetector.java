@@ -17,6 +17,7 @@ public class EnhancedGestureDetector extends GestureDetector {
 
     @Override
     public boolean scrolled(int amount) {
+        gestureListener.touchDown(0,0,0,0);
         return gestureListener.zoom(0, amount * ZOOM_SCROLL_FACTOR);
     }
 }

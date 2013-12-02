@@ -25,6 +25,12 @@ public class BoundlessCameraHandler implements CameraHandler {
     }
 
     @Override
+    public void set(float x, float y) {
+        camera.position.set(x * camera.zoom, y * camera.zoom, 0);
+        update();
+    }
+
+    @Override
     public void move(float x, float y) {
         camera.position.add(x * camera.zoom, y * camera.zoom, 0);
         update();

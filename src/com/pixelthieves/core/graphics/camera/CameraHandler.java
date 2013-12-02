@@ -11,6 +11,14 @@ import com.badlogic.gdx.math.Vector2;
 public interface CameraHandler {
 
     /**
+     * Sets the camera position to specific value. Camera position will be adjusted based on the zoom level of camera.
+     *
+     * @param x position on x-axis.
+     * @param y position on y-axis.
+     */
+    void set(float x, float y);
+
+    /**
      * Move the camera around. Camera position will be adjusted based on the zoom level of camera.
      *
      * @param x the amount camera will be moved on x-axis.

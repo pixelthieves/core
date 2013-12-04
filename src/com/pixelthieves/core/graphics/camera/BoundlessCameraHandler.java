@@ -51,8 +51,9 @@ public class BoundlessCameraHandler implements CameraHandler {
     @Override
     public Vector2 screenToWorld(float x, float y) {
         y = Gdx.graphics.getHeight() - y;
-        return new Vector2(camera.position.x + x * camera.zoom - halfViewport.x,
+        Vector2 vector2 = new Vector2(camera.position.x + x * camera.zoom - halfViewport.x,
                 camera.position.y + y * camera.zoom - halfViewport.y);
+        return vector2;
     }
 
     public void update() {

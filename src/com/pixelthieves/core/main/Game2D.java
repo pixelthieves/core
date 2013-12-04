@@ -1,6 +1,7 @@
 package com.pixelthieves.core.main;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.pixelthieves.core.utils.Param;
 import com.pixelthieves.core.utils.ParamHolder;
@@ -46,6 +47,11 @@ public abstract class Game2D implements ApplicationListener {
             init(camera);
             initialize = false;
         }
+    }
+
+    public void restart(){
+        this.initialize = true;
+        resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     protected abstract void renderInternal();

@@ -25,8 +25,4 @@ public class DamageComponent extends Component {
     public void setDamage(float damage) {
         this.damage = damage;
     }
-
-    public float getDps() {
-        return damage / speed;
-    }
 }

@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Rectangle;
  * so, camera's viewport aligned with bounds. Created by Tomas on 9/7/13.
  */
 public class BoundedCameraHandler extends BoundlessCameraHandler {
-    private final Rectangle bounds;
+    private Rectangle bounds;
 
     public BoundedCameraHandler(OrthographicCamera camera, int width, int height, float zoomMax) {
         this(camera, new Rectangle(0, 0, width, height), zoomMax);
@@ -17,9 +17,14 @@ public class BoundedCameraHandler extends BoundlessCameraHandler {
 
     public BoundedCameraHandler(OrthographicCamera camera, Rectangle bounds, float zoomMax) {
         super(camera, getMinimalZoom(camera, bounds), zoomMax);
+        setBounds(bounds);
+        zoom(camera.zoom);
+    }
+
+    public void setBounds(Rectangle bounds) {
         if (bounds == null) throw new IllegalArgumentException("Bounds can't be null");
         this.bounds = bounds;
-        zoom(camera.zoom);
+        update();
     }
 
     private static float getMinimalZoom(OrthographicCamera camera, Rectangle bounds) {

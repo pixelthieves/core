@@ -7,6 +7,17 @@ import java.util.concurrent.Callable;
  */
 public interface AdService {
 
+    public enum AdType {
+        Interestial, MoreApps
+    }
+
     public void initAds();
-    public void showAd(Callable handler);
+
+    public void resume();
+
+    public void pause();
+
+    public void showAd(AdType adType);
+
+    public void setHandler(AdHandler handler);
 }

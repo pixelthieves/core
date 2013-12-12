@@ -24,7 +24,7 @@ public class BoundedCameraHandler extends BoundlessCameraHandler {
     public void setBounds(Rectangle bounds) {
         if (bounds == null) throw new IllegalArgumentException("Bounds can't be null");
         this.bounds = bounds;
-        update();
+       // setZoomMax(getMinimalZoom(camera, bounds));
     }
 
     private static float getMinimalZoom(OrthographicCamera camera, Rectangle bounds) {

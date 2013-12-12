@@ -10,8 +10,8 @@ import com.badlogic.gdx.math.Vector2;
  */
 
 public class BoundlessCameraHandler implements CameraHandler {
-    public final float ZOOM_MAX;
-    public final float ZOOM_MIN;
+    public float zoomMax;
+    public float zoomMin;
     protected final OrthographicCamera camera;
     protected Vector2 halfViewport = new Vector2();
 
@@ -19,8 +19,8 @@ public class BoundlessCameraHandler implements CameraHandler {
         if (zoomMax < zoomMin) {
             throw new IllegalArgumentException("ZoomMax has to be larger than zoomMin.");
         }
-        this.ZOOM_MAX = zoomMax;
-        this.ZOOM_MIN = zoomMin;
+        this.zoomMax = zoomMax;
+        this.zoomMin = zoomMin;
         this.camera = camera;
     }
 
@@ -39,7 +39,7 @@ public class BoundlessCameraHandler implements CameraHandler {
     @Override
     public void zoom(float zoom) {
         //TODO Choosing a good delta value is crucial, current mechanism should be improved.
-        camera.zoom = MathUtils.clamp(camera.zoom + zoom * ZOOM_MAX, ZOOM_MIN, ZOOM_MAX);
+        camera.zoom = MathUtils.clamp(camera.zoom + zoom * zoomMax, zoomMin, zoomMax);
         update();
     }
 
@@ -58,5 +58,13 @@ public class BoundlessCameraHandler implements CameraHandler {
 
     public void update() {
         halfViewport.set(camera.viewportWidth * camera.zoom / 2f, camera.viewportHeight * camera.zoom / 2f);
+    }
+
+    public void setZoomMax(float zoomMax) {
+        this.zoomMax = zoomMax;
+    }
+
+    public void setZoomMin(float zoomMin) {
+        this.zoomMin = zoomMin;
     }
 }

@@ -5,6 +5,7 @@ package com.pixelthieves.core.services;
  */
 public interface AdHandler {
 
+    public void onAdDisplayed();
     public void onAdClicked();
     public void onAdClosed();
     public void onAdFailed(String message);

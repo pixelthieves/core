@@ -4,18 +4,18 @@ import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
+import com.badlogic.gdx.utils.Disposable;
 
-import java.io.File;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Class that is responsible for loading and baking shaders.
  */
-public class Shader {
-    private static Shader instance;
+public class Shaders implements Disposable {
     private final HashMap<String, ShaderStructure> map = new HashMap<String, ShaderStructure>();
 
-    private Shader() {
+    public Shaders() {
         FileHandle[] list = getFiles();
         for (FileHandle file : list) {
             processFile(file);
@@ -59,7 +59,7 @@ public class Shader {
             dirHandle = Gdx.files.internal("./bin/data/shaders");
             if (!dirHandle.exists()) {
                 files = Gdx.files.internal("data/shaders").list();
-            }else{
+            } else {
                 files = dirHandle.list();
             }
         }
@@ -72,11 +72,8 @@ public class Shader {
      * @param name of the shader
      * @return a baked shader
      */
-    public static ShaderProgram getShader(String name) {
-        if (instance == null) {
-            instance = new Shader();
-        }
-        return instance.getStructure(name).getShader();
+    public ShaderProgram getShader(String name) {
+        return getStructure(name).getShader();
     }
 
     private ShaderStructure getStructure(String name) {
@@ -90,6 +87,12 @@ public class Shader {
             }
         }
         return value;
+    }
+
+    public void dispose() {
+        for (Map.Entry<String, ShaderStructure> entry : map.entrySet()) {
+            entry.getValue().getShader().dispose();
+        }
     }
 
     private enum ShaderType {

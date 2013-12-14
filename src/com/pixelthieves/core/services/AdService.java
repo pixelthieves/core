@@ -1,7 +1,5 @@
 package com.pixelthieves.core.services;
 
-import java.util.concurrent.Callable;
-
 /**
  * Created by Tomas on 12/7/13.
  */
@@ -11,13 +9,21 @@ public interface AdService {
         Interestial, MoreApps
     }
 
-    public void initAds();
+    public void onCreate();
 
-    public void resume();
+    public void onStart();
 
-    public void pause();
+    public void onResume();
+
+    public void onPause();
+
+    public void onStop();
+
+    public void onDestroy();
+
+    public void cacheAd(AdType adType);
 
     public void showAd(AdType adType);
 
-    public void setHandler(AdHandler handler);
+    public void setAdHandler(AdHandler handler);
 }

@@ -6,7 +6,7 @@ package com.pixelthieves.core.services;
 public interface AdService {
 
     public enum AdType {
-        Interestial, MoreApps
+        Interestial, MoreApps, Video;
     }
 
     public void onCreate();

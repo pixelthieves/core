@@ -18,11 +18,11 @@ public class Shaders implements Disposable {
     public Shaders() {
         FileHandle[] list = getFiles();
         for (FileHandle file : list) {
-            processFile(file);
+            processFile(file, true);
         }
     }
 
-    private void processFile(FileHandle file) {
+    private void processFile(FileHandle file, boolean silent) {
         String ext = file.extension();
         String name = file.nameWithoutExtension();
 
@@ -41,6 +41,15 @@ public class Shaders implements Disposable {
                 ss.setFragment(file.readString());
                 break;
         }
+        if (silent) {
+            try {
+                ss.compile();
+            } catch (ShaderException e) {
+                System.out.println("Warning: " + e.getMessage());
+            }
+        } else {
+            ss.compile();
+        }
 
         if (!map.containsKey(name)) {
             map.put(name, ss);
@@ -48,7 +57,7 @@ public class Shaders implements Disposable {
     }
 
     private FileHandle[] getFiles() {
-        FileHandle[] files = null;
+        FileHandle[] files;
         FileHandle dirHandle;
 
         // Eclipse side-effect of linking assets, assets are copied in bin folder
@@ -79,8 +88,8 @@ public class Shaders implements Disposable {
     private ShaderStructure getStructure(String name) {
         ShaderStructure value = map.get(name);
         if (value == null) {
-            processFile(Gdx.files.internal("data/shaders/" + name + ".vsh"));
-            processFile(Gdx.files.internal("data/shaders/" + name + ".fsh"));
+            processFile(Gdx.files.internal("data/shaders/" + name + ".vsh"), true);
+            processFile(Gdx.files.internal("data/shaders/" + name + ".fsh"), true);
             value = map.get(name);
             if (value == null) {
                 throw new IllegalArgumentException("Specified Shader does not exists: " + name);
@@ -91,7 +100,10 @@ public class Shaders implements Disposable {
 
     public void dispose() {
         for (Map.Entry<String, ShaderStructure> entry : map.entrySet()) {
-            entry.getValue().getShader().dispose();
+            ShaderProgram shader = entry.getValue().getShader();
+            if(shader != null){
+            shader.dispose();
+            }
         }
     }
 
@@ -111,12 +123,10 @@ public class Shaders implements Disposable {
 
         public void setVertex(String vertex) {
             this.vertex = vertex;
-            compile();
         }
 
         public void setFragment(String fragment) {
             this.fragment = fragment;
-            compile();
         }
 
         private void compile() {
@@ -124,7 +134,9 @@ public class Shaders implements Disposable {
                 System.out.println("Compiling shader [" + name + "]");
                 program = new ShaderProgram(vertex, fragment);
                 if (!program.isCompiled()) {
-                    throw ShaderException.getInstance(name, program);
+                    ShaderException instance = ShaderException.getInstance(name, program);
+                    program = null;
+                    throw instance;
                 }
             }
         }

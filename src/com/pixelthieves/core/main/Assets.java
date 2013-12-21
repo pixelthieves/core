@@ -80,7 +80,7 @@ public class Assets implements Disposable{
             cachedTextures.put(name, result);
         }
 
-        if (result != null) {
+        if (result != null && result.size != 0) {
             return result;
         } else {
             throw new IllegalArgumentException("Texture [" + name + "] is not available.");
